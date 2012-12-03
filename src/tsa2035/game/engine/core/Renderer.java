@@ -1,6 +1,7 @@
 package tsa2035.game.engine.core;
 
 import org.lwjgl.LWJGLException;
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
@@ -26,7 +27,7 @@ public class Renderer {
 		setScene(firstScene);
 	}
 	
-	public static void renderLoop()
+	public static void renderLoop() throws LWJGLException
 	{
 		while ( !Display.isCloseRequested() )
 		{
@@ -35,7 +36,13 @@ public class Renderer {
 	        
 	        if ( currentScene != null )
 	        {
+	        	
+	        	if ( !Keyboard.isCreated() )
+	        		Keyboard.create();
+	        	Keyboard.poll();
+	        	
 	        	currentScene.render();
+	        	
 	        	GL11.glFlush();
 	        	Display.sync(10);
 	        	Display.update();
