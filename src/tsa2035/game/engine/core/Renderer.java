@@ -9,20 +9,20 @@ import org.lwjgl.opengl.GL11;
 import tsa2035.game.engine.scene.Scene;
 
 public class Renderer {
-	private static int screenL, screenW;
+	private static int screenX, screenY;
 	private static Scene currentScene = null;
-	public static void init(Scene firstScene, int screenL, int screenW) throws LWJGLException
+	public static void init(Scene firstScene, int screenX, int screenY) throws LWJGLException
 	{
-		Renderer.screenL = screenL;
-		Renderer.screenW = screenW;
-		Display.setDisplayMode(new DisplayMode(screenL, screenW));
+		Renderer.screenX = screenX;
+		Renderer.screenY = screenY;
+		Display.setDisplayMode(new DisplayMode(screenX, screenY));
 		Display.create();
 		
 		GL11.glDisable(GL11.GL_DEPTH_TEST);
 		GL11.glEnable(GL11.GL_TEXTURE_2D);
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 		GL11.glEnable(GL11.GL_BLEND);
-		GL11.glOrtho(0, screenL, screenW, 0, 0, 0);
+		GL11.glOrtho(0, screenX, screenY, 0, 0, 0);
 		
 		setScene(firstScene);
 	}
@@ -53,14 +53,14 @@ public class Renderer {
 		System.exit(0);
 	}
 	
-	public static int getScreenLength()
+	public static int getScreenX()
 	{
-		return screenL;
+		return screenX;
 	}
 	
-	public static int getScreenWidth()
+	public static int getScreenY()
 	{
-		return screenW;
+		return screenY;
 	}
 	
 	public static void setScene(Scene s)
