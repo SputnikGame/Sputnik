@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import org.lwjgl.opengl.GL11;
+
 import tsa2035.game.engine.scene.background.Background;
 import tsa2035.game.engine.scene.background.SolidBackground;
 
@@ -39,8 +41,10 @@ public abstract class Scene {
 		Iterator<Sprite> it = objects.values().iterator();
 		while ( it.hasNext() )
 		{
+			GL11.glPushMatrix();
 			Sprite obj = it.next();
 			obj.render();
+			GL11.glPopMatrix();
 		}
 	}
 }

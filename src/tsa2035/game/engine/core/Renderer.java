@@ -1,5 +1,8 @@
 package tsa2035.game.engine.core;
 
+import static org.lwjgl.opengl.GL11.glLoadIdentity;
+import static org.lwjgl.opengl.GL11.glTranslatef;
+
 import org.lwjgl.LWJGLException;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
@@ -41,16 +44,10 @@ public class Renderer {
 	        	if ( !Keyboard.isCreated() )
 	        		Keyboard.create();
 	        	Keyboard.poll();
+	        	GL11.glMatrixMode(GL11.GL_MODELVIEW);
+	        	GL11.glLoadIdentity();
 	        	
 	        	currentScene.render();
-	        	
-	        	GL11.glBegin(GL11.GL_LINES);
-	        	GL11.glVertex2f(0, 1);
-	        	GL11.glVertex2f(0, -1);
-	        	
-	        	GL11.glVertex2f(1, 0);
-	        	GL11.glVertex2f(-1, 0);
-	        	GL11.glEnd();
 	        	
 	        	GL11.glFlush();
 	        	Display.sync(10);

@@ -2,6 +2,7 @@ package tsa2035.game.engine.scene;
 
 import static org.lwjgl.opengl.GL11.*;
 
+import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.geom.Point;
 
 import tsa2035.game.engine.core.Renderer;
@@ -58,13 +59,10 @@ public class Sprite {
 		
 		texture.bind();
 		glColor3f(1,1,1);
-		
+		glTranslatef(xPos, yPos, 0);
 		glBegin(GL_QUADS);
 		float x = (float)texture.getWidth()/(float)Renderer.getScreenX();
 		float y = (float)texture.getHeight()/(float)Renderer.getScreenY();
-		
-		x += xPos;
-		y += yPos;
 		
 		glTexCoord2f(1, 1);
 		glVertex2f(-y, -x);
