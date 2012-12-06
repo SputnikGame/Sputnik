@@ -2,9 +2,9 @@ package tsa2035.game.engine.scene;
 
 import static org.lwjgl.opengl.GL11.*;
 
-import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.geom.Point;
 
+import tsa2035.game.engine.bounding.BoundingBox;
 import tsa2035.game.engine.core.Renderer;
 import tsa2035.game.engine.texture.Texture;
 
@@ -13,12 +13,14 @@ public class Sprite {
 	float scale;
 	float xPos, yPos;
 	
+	BoundingBox boundingBox = new BoundingBox();
+	
 	public Sprite(float x, float y, Texture t)
 	{
 		texture = t;
 		
-		xPos = x;
-		yPos = y;
+		this.xPos = x;
+		this.yPos = y;
 		
 		setScale(1);
 	}
@@ -65,32 +67,39 @@ public class Sprite {
 		float x = (float)texture.getWidth()/(float)Renderer.getScreenX();
 		float y = (float)texture.getHeight()/(float)Renderer.getScreenY();
 		
+		x *= scale;
+		y *= scale;
 		
+		float xHalf = x/2;
+		float yHalf = y/2;
 		
 		float points[][] = {
-				{ 0,0 },
-				{ x,0 },
-				{ x,y },
-				{ 0,y }
+				{ xHalf, yHalf },
+				{ -xHalf,yHalf },
+				{ -xHalf,-yHalf },
+				{ xHalf, -yHalf }	
 		};
 		
-		for ( int i = 0; i < points.length; i++ )
+		for ( int i = 0; points.length > i; i++ )
 		{
-			points[i][0] *= scale;
-			points[i][1] *= scale;
+			points[i][0] += xPos;
+			points[i][1] += yPos;
 		}
 		
+		
+		boundingBox.setPoints(points);
+		
 		glTexCoord2f(1, 1);
-		glVertex2f(points[0][0], points[0][1]);
+		glVertex2f(points[3][0], points[3][1]);
 
 		glTexCoord2f(0, 1);
-		glVertex2f(points[1][0], points[1][1]);
-
-		glTexCoord2f(0, 0);
 		glVertex2f(points[2][0], points[2][1]);
 
+		glTexCoord2f(0, 0);
+		glVertex2f(points[1][0], points[1][1]);
+
 		glTexCoord2f(1, 0);	
-		glVertex2f(points[3][0], points[3][1]);
+		glVertex2f(points[0][0], points[0][1]);
 		
 		glEnd();
 	}
@@ -98,5 +107,15 @@ public class Sprite {
 	public void setScale(float scale)
 	{
 		this.scale = scale+1;
+	}
+	
+	public boolean contacting(Sprite other)
+	{
+		return boundingBox.contacting(other.getBoundingBox());
+	}
+	
+	public BoundingBox getBoundingBox()
+	{
+		return boundingBox;
 	}
 }
