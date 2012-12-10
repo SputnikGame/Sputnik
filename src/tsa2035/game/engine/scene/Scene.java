@@ -1,7 +1,6 @@
 package tsa2035.game.engine.scene;
 
 import java.awt.Color;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -34,10 +33,14 @@ public abstract class Scene {
 		return objects.get(name);
 	}
 	
+	public abstract void sceneLogic();
+
 	public void render()
 	{
-		bg.render();
+		sceneLogic();
 		
+		bg.render();
+
 		Iterator<Sprite> it = objects.values().iterator();
 		while ( it.hasNext() )
 		{

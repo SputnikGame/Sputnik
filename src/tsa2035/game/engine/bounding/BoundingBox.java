@@ -1,8 +1,7 @@
 package tsa2035.game.engine.bounding;
 
 public class BoundingBox {
-	float lowestX = -999, lowestY = -999,
-			  highestX = -999, highestY = -999;
+	float lowestX,lowestY,highestX,highestY;
 	
 	public BoundingBox()
 	{
@@ -17,6 +16,11 @@ public class BoundingBox {
 	
 	public void setPoints(float points[][])
 	{
+		lowestX = 999;
+		lowestY = 999;
+		highestX = -999;
+		highestY = -999;
+
 		for ( int i = 0; i < points.length; i++ )
 		{
 			if ( lowestX > points[i][0] ) 
@@ -53,9 +57,7 @@ public class BoundingBox {
 	
 	public boolean contacting(BoundingBox box)
 	{
-		if ( getLowestX() < box.getHighestX() && getHighestX() > box.getLowestX() &&
-			    getHighestY() > box.getLowestY() && getLowestY() < box.getHighestY() )
-			return true;
-		return false;
+		return getLowestX() < box.getHighestX() && getHighestX() > box.getLowestX() &&
+			    getHighestY() > box.getLowestY() && getLowestY() < box.getHighestY();
 	}
 }

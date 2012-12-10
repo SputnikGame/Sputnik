@@ -23,8 +23,6 @@ public class Renderer {
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glOrtho(0, screenX, screenY, 0, 0, 0);
-		
-		
 	}
 	
 	public static void renderLoop(Scene firstScene) throws LWJGLException
@@ -55,7 +53,7 @@ public class Renderer {
 		Display.destroy();
 		System.exit(0);
 	}
-	
+
 	public static int getScreenX()
 	{
 		return screenX;
