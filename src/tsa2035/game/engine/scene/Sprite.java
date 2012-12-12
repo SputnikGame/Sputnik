@@ -61,9 +61,6 @@ public class Sprite {
 		if ( texture == null )
 			return;
 
-		texture.bind();
-		glColor3f(1,1,1);
-		glBegin(GL_QUADS);
 		float x = (float)texture.getWidth()/(float)Renderer.getScreenX();
 		float y = (float)texture.getHeight()/(float)Renderer.getScreenY();
 		
@@ -85,9 +82,14 @@ public class Sprite {
 			points[i][0] += xPos;
 			points[i][1] += yPos;
 		}
-		
-		
+
 		boundingBox.setPoints(points);
+		
+		texture.bind();
+		glColor3f(1,1,1);
+		glBegin(GL_QUADS);
+		
+		
 		
 		glTexCoord2f(1, 1);
 		glVertex2f(points[3][0], points[3][1]);
@@ -102,6 +104,8 @@ public class Sprite {
 		glVertex2f(points[0][0], points[0][1]);
 		
 		glEnd();
+		
+		boundingBox.renderBoxes();
 	}
 	
 	public void setScale(float scale)

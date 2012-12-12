@@ -1,5 +1,9 @@
 package tsa2035.game.engine.bounding;
 
+import static org.lwjgl.opengl.GL11.glVertex2f;
+
+import org.lwjgl.opengl.GL11;
+
 public class BoundingBox {
 	float lowestX,lowestY,highestX,highestY;
 	
@@ -20,7 +24,6 @@ public class BoundingBox {
 		lowestY = 999;
 		highestX = -999;
 		highestY = -999;
-
 		for ( int i = 0; i < points.length; i++ )
 		{
 			if ( lowestX > points[i][0] ) 
@@ -35,6 +38,16 @@ public class BoundingBox {
 		}
 	}
 	
+	public void renderBoxes()
+	{
+		GL11.glBegin(GL11.GL_QUADS);
+		glVertex2f(lowestX, lowestY);
+		glVertex2f(lowestX, highestY);
+		glVertex2f(highestX, highestY);
+		glVertex2f(highestX, lowestY);
+		GL11.glEnd();
+	}
+	
 	public float getHighestY()
 	{
 		return highestY;
@@ -47,7 +60,7 @@ public class BoundingBox {
 
 	public float getLowestX()
 	{
-		return lowestY;
+		return lowestX;
 	}
 	
 	public float getHighestX()
@@ -57,7 +70,6 @@ public class BoundingBox {
 	
 	public boolean contacting(BoundingBox box)
 	{
-		return getLowestX() < box.getHighestX() && getHighestX() > box.getLowestX() &&
-			    getHighestY() > box.getLowestY() && getLowestY() < box.getHighestY();
+		return (getLowestX()<box.getHighestX() && getHighestX()>box.getLowestX() && getHighestY()>box.getLowestY() && getLowestY()<box.getHighestY());
 	}
 }

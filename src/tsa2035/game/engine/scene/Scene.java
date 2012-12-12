@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
 import tsa2035.game.engine.scene.background.Background;
@@ -12,7 +13,7 @@ import tsa2035.game.engine.scene.background.SolidBackground;
 public abstract class Scene {
 	private HashMap<String, Sprite> objects = new HashMap<String, Sprite>();
 	private Background bg = new SolidBackground(Color.WHITE);
-	
+
 	public Scene()
 	{
 		
@@ -37,6 +38,7 @@ public abstract class Scene {
 
 	public void render()
 	{
+		Keyboard.poll();
 		sceneLogic();
 		
 		bg.render();
