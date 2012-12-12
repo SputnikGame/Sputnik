@@ -56,13 +56,23 @@ public class Sprite {
 		return yPos;
 	}
 	
+	public float getHeight()
+	{
+		return ((float)texture.getHeight()/(float)Renderer.getScreenY())*scale;
+	}
+	
+	public float getWidth()
+	{
+		return ((float)texture.getWidth()/(float)Renderer.getScreenX())*scale;
+	}
+	
 	public void render()
 	{
 		if ( texture == null )
 			return;
 
-		float x = (float)texture.getWidth()/(float)Renderer.getScreenX();
-		float y = (float)texture.getHeight()/(float)Renderer.getScreenY();
+		float x = getWidth();
+		float y = getHeight();
 		
 		x *= scale;
 		y *= scale;
