@@ -75,7 +75,7 @@ public class BoundingBox {
 		checks[1] = getHighestX()>box.getLowestX();
 		checks[2] = getHighestY()>box.getLowestY();
 		checks[3] = getLowestY()<box.getHighestY();
-		//return false;
+		
 		return checks[0] && checks[1] && checks[2] && checks[3];
 	}
 }

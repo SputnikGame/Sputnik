@@ -83,10 +83,11 @@ public class Sprite {
 			points[i][1] += yPos;
 		}
 		
+		boundingBox.setPoints(points);
+		
 		texture.bind();
 		glColor3f(1,1,1);
 		glBegin(GL_QUADS);
-		
 		
 		
 		glTexCoord2f(1, 1);
