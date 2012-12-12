@@ -70,6 +70,12 @@ public class BoundingBox {
 	
 	public boolean contacting(BoundingBox box)
 	{
-		return (getLowestX()<box.getHighestX() && getHighestX()>box.getLowestX() && getHighestY()>box.getLowestY() && getLowestY()<box.getHighestY());
+		boolean checks[] = new boolean[4];
+		checks[0] = getLowestX()<box.getHighestX();
+		checks[1] = getHighestX()>box.getLowestX();
+		checks[2] = getHighestY()>box.getLowestY();
+		checks[3] = getLowestY()<box.getHighestY();
+		//return false;
+		return checks[0] && checks[1] && checks[2] && checks[3];
 	}
 }
