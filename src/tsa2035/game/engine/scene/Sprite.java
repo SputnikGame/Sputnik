@@ -82,7 +82,7 @@ public class Sprite {
 			points[i][0] += xPos;
 			points[i][1] += yPos;
 		}
-		/*
+		
 		texture.bind();
 		glColor3f(1,1,1);
 		glBegin(GL_QUADS);
@@ -102,35 +102,6 @@ public class Sprite {
 		glVertex2f(points[0][0], points[0][1]);
 		
 		glEnd();
-		*/
-		
-		float lowestX = 999;
-		float lowestY = 999;
-		float highestX = -999;
-		float highestY = -999;
-		for ( int i = 0; i < points.length; i++ )
-		{
-			if ( lowestX > points[i][0] ) 
-				lowestX = points[i][0];
-			if ( highestX < points[i][0] ) 
-				highestX = points[i][0];
-			
-			if ( lowestY > points[i][1] ) 
-				lowestY = points[i][1];
-			if ( highestY < points[i][1] ) 
-				highestY = points[i][1];
-		}
-		
-		boundingBox.setPoints(points);
-		glPointSize(10.0f); 
-		
-		glBegin(GL_POINTS);
-		glColor3f(0.0f, 1.0f,0.0f);
-		glVertex2f(boundingBox.getHighestX(), boundingBox.getHighestY());
-		glVertex2f(boundingBox.getLowestX(), boundingBox.getLowestY());
-		glEnd();
-		
-		boundingBox.renderBoxes();
 	}
 	
 	public void setScale(float scale)
