@@ -22,7 +22,7 @@ public class PlayerController {
 		{
 			Sprite thisObj = sceneObjects.next();
 			
-			if ( !player.equals(thisObj) )
+			if ( thisObj.isSolid() && !player.equals(thisObj) )
 			{
 				Side hitSide = player.sideOfContact(thisObj);
 				if ( hitSide != Side.NONE )

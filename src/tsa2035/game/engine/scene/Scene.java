@@ -49,7 +49,7 @@ public abstract class Scene {
 		{
 			GL11.glPushMatrix();
 			Sprite obj = it.next();
-			obj.render();
+			obj.render(this);
 			GL11.glPopMatrix();
 		}
 		

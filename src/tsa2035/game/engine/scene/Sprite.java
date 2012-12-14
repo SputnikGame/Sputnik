@@ -2,21 +2,27 @@ package tsa2035.game.engine.scene;
 
 import static org.lwjgl.opengl.GL11.*;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import org.newdawn.slick.geom.Point;
 
 import tsa2035.game.engine.bounding.BoundingBox;
+import tsa2035.game.engine.bounding.CollisionCallback;
 import tsa2035.game.engine.bounding.Side;
 import tsa2035.game.engine.core.Renderer;
 import tsa2035.game.engine.texture.Texture;
 
 public class Sprite {
-	Texture texture = null;
-	float scale;
-	float xPos, yPos;
+	private Texture texture = null;
+	private float scale;
+	private float xPos, yPos;
 	
-	boolean solidSides[] = new boolean[4];
+	private boolean solid = false;
 	
-	BoundingBox boundingBox = new BoundingBox();
+	private BoundingBox boundingBox = new BoundingBox();
+	
+	private ArrayList<CollisionCallback> callbacks = new ArrayList<CollisionCallback>();
 	
 	public Sprite(float x, float y, Texture t)
 	{
@@ -74,7 +80,7 @@ public class Sprite {
 		return ((float)texture.getWidth()/(float)Renderer.getScreenX())*scale;
 	}
 	
-	public void render()
+	public void render(Scene parent)
 	{
 		if ( texture == null )
 			return;
@@ -100,6 +106,20 @@ public class Sprite {
 		
 		boundingBox.setPoints(points);
 		
+		Iterator<Sprite> sceneObjects = parent.iterator();
+		
+		while( sceneObjects.hasNext() )
+		{
+			Sprite obj = sceneObjects.next();
+			Side sideOfHit = Side.NONE;
+			if ( !obj.equals(this) && (sideOfHit = sideOfContact(obj)) != Side.NONE )
+			{
+				Iterator<CollisionCallback> callbackIt = callbacks.iterator();
+				while ( callbackIt.hasNext() )
+					callbackIt.next().collisionOccured(this, obj, sideOfHit);
+			}
+		}
+		
 		texture.bind();
 		glColor3f(1,1,1);
 		glBegin(GL_QUADS);
@@ -119,7 +139,11 @@ public class Sprite {
 		
 		glEnd();
 	}
-
+	
+	public void registerCallback(CollisionCallback callback)
+	{
+		callbacks.add(callback);
+	}
 	
 	public void setScale(float scale)
 	{
@@ -141,13 +165,13 @@ public class Sprite {
 		return boundingBox;
 	}
 	
-	public boolean isSolidOnSide(Side testSide)
+	public boolean isSolid()
 	{
-		return solidSides[testSide.ordinal()];
+		return solid;
 	}
 	
-	public void setSolidOnSide(Side solidSide, boolean state)
+	public void setSolid(boolean state)
 	{
-		solidSides[solidSide.ordinal()] = state;
+		solid = state;
 	}
 }
