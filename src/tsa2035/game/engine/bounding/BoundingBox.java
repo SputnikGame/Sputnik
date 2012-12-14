@@ -114,7 +114,7 @@ public class BoundingBox {
 			}
 			else
 			{
-				if ( wy > -hx ) // right
+				if ( wy > -hx )
 					return Side.RIGHT;
 				else
 					return Side.BOTTOM;

@@ -14,6 +14,8 @@ public abstract class Scene {
 	private HashMap<String, Sprite> objects = new HashMap<String, Sprite>();
 	private Background bg = new SolidBackground(Color.WHITE);
 
+	PlayerController playerController = null;
+	
 	public Scene()
 	{
 		
@@ -39,7 +41,6 @@ public abstract class Scene {
 	public void render()
 	{
 		Keyboard.poll();
-		sceneLogic();
 		
 		bg.render();
 
@@ -51,5 +52,21 @@ public abstract class Scene {
 			obj.render();
 			GL11.glPopMatrix();
 		}
+		
+		sceneLogic();
+		
+		if ( playerController != null )
+			playerController.poll(this);
+		
+	}
+	
+	public Iterator<Sprite> iterator()
+	{
+		return objects.values().iterator();
+	}
+	
+	public void setPlayer(PlayerController pc)
+	{
+		playerController = pc;
 	}
 }

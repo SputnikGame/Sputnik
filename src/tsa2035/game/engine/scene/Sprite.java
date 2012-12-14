@@ -5,6 +5,7 @@ import static org.lwjgl.opengl.GL11.*;
 import org.newdawn.slick.geom.Point;
 
 import tsa2035.game.engine.bounding.BoundingBox;
+import tsa2035.game.engine.bounding.Side;
 import tsa2035.game.engine.core.Renderer;
 import tsa2035.game.engine.texture.Texture;
 
@@ -13,9 +14,16 @@ public class Sprite {
 	float scale;
 	float xPos, yPos;
 	
+	boolean solidSides[] = new boolean[4];
+	
 	BoundingBox boundingBox = new BoundingBox();
 	
 	public Sprite(float x, float y, Texture t)
+	{
+		this(x,y,t,false);
+	}
+	
+	public Sprite(float x, float y, Texture t, boolean solid)
 	{
 		texture = t;
 		
@@ -74,17 +82,14 @@ public class Sprite {
 		float x = getWidth();
 		float y = getHeight();
 		
-		x *= scale;
-		y *= scale;
-		
-		float xHalf = x/2;
-		float yHalf = y/2;
+		x= x/2;
+		y= y/2;
 		
 		float points[][] = {
-				{ xHalf, yHalf },
-				{ -xHalf,yHalf },
-				{ -xHalf,-yHalf },
-				{ xHalf, -yHalf }	
+				{ x, y },
+				{ -x,y },
+				{ -x,-y },
+				{ x, -y }	
 		};
 		
 		for ( int i = 0; points.length > i; i++ )
@@ -114,6 +119,7 @@ public class Sprite {
 		
 		glEnd();
 	}
+
 	
 	public void setScale(float scale)
 	{
@@ -125,8 +131,23 @@ public class Sprite {
 		return boundingBox.contacting(other.getBoundingBox());
 	}
 	
+	public Side sideOfContact(Sprite other)
+	{
+		return boundingBox.sideOfContact(other.getBoundingBox());
+	}
+	
 	public BoundingBox getBoundingBox()
 	{
 		return boundingBox;
+	}
+	
+	public boolean isSolidOnSide(Side testSide)
+	{
+		return solidSides[testSide.ordinal()];
+	}
+	
+	public void setSolidOnSide(Side solidSide, boolean state)
+	{
+		solidSides[solidSide.ordinal()] = state;
 	}
 }
