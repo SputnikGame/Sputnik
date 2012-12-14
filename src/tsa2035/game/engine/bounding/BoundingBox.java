@@ -68,14 +68,59 @@ public class BoundingBox {
 		return highestX;
 	}
 	
+	public float getWidth()
+	{
+		return getHighestX()-getLowestX();
+	}
+	
+	public float getHeight()
+	{
+		return getHighestY()-getLowestY();
+	}
+	
+	public float getX()
+	{
+		return getLowestX()+(getWidth()/2);
+	}
+	
+	public float getY()
+	{
+		return getLowestY()+(getHeight()/2);
+	}
+	
 	public boolean contacting(BoundingBox box)
 	{
-		boolean checks[] = new boolean[4];
-		checks[0] = getLowestX()<box.getHighestX();
-		checks[1] = getHighestX()>box.getLowestX();
-		checks[2] = getHighestY()>box.getLowestY();
-		checks[3] = getLowestY()<box.getHighestY();
+		return sideOfContact(box) != Side.NONE;
+	}
+	
+	public Side sideOfContact(BoundingBox box)
+	{
+		float w = (float)0.5f*(getWidth()+box.getWidth());
+		float h = (float)0.5f*(getHeight()+box.getHeight());
+		float dx = getX()-box.getX();
+		float dy = getY()-box.getY();
 		
-		return checks[0] && checks[1] && checks[2] && checks[3];
+		if ( Math.abs(dx) <= w && Math.abs(dy) <= h )
+		{
+			float wy = w*dy;
+			float hx = h*dx;
+			
+			if ( wy > hx )
+			{
+				if ( wy > -hx )
+					return Side.TOP;
+				else
+					return Side.LEFT;
+			}
+			else
+			{
+				if ( wy > -hx ) // right
+					return Side.RIGHT;
+				else
+					return Side.BOTTOM;
+			}
+		}
+		
+		return Side.NONE;
 	}
 }
