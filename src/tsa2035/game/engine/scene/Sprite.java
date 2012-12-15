@@ -8,7 +8,6 @@ import java.util.Iterator;
 import org.newdawn.slick.geom.Point;
 
 import tsa2035.game.engine.bounding.BoundingBox;
-import tsa2035.game.engine.bounding.CollisionCallback;
 import tsa2035.game.engine.bounding.Side;
 import tsa2035.game.engine.core.Renderer;
 import tsa2035.game.engine.texture.Texture;
@@ -19,10 +18,12 @@ public class Sprite {
 	private float xPos, yPos;
 	
 	private boolean solid = false;
+	private boolean interactable = false;
 	
 	private BoundingBox boundingBox = new BoundingBox();
 	
-	private ArrayList<CollisionCallback> callbacks = new ArrayList<CollisionCallback>();
+	private ArrayList<CollisionCallback> collisionCallbacks = new ArrayList<CollisionCallback>();
+	private ArrayList<InteractionCallback> interactionCallbacks = new ArrayList<InteractionCallback>();
 	
 	public Sprite(float x, float y, Texture t)
 	{
@@ -114,7 +115,7 @@ public class Sprite {
 			Side sideOfHit = Side.NONE;
 			if ( !obj.equals(this) && (sideOfHit = sideOfContact(obj)) != Side.NONE )
 			{
-				Iterator<CollisionCallback> callbackIt = callbacks.iterator();
+				Iterator<CollisionCallback> callbackIt = collisionCallbacks.iterator();
 				while ( callbackIt.hasNext() )
 					callbackIt.next().collisionOccured(this, obj, sideOfHit);
 			}
@@ -140,9 +141,9 @@ public class Sprite {
 		glEnd();
 	}
 	
-	public void registerCallback(CollisionCallback callback)
+	public void registerCollisionCallback(CollisionCallback callback)
 	{
-		callbacks.add(callback);
+		collisionCallbacks.add(callback);
 	}
 	
 	public void setScale(float scale)
@@ -173,5 +174,27 @@ public class Sprite {
 	public void setSolid(boolean state)
 	{
 		solid = state;
+	}
+	
+	public boolean isInteractable()
+	{
+		return interactable;
+	}
+	
+	public void setInteractable(boolean state)
+	{
+		interactable = state;
+	}
+	
+	public void interact(Sprite origin)
+	{
+		if ( isInteractable() && !contacting(origin) )
+			return;
+		
+		Iterator<InteractionCallback> callbackIt = interactionCallbacks.iterator();
+		while ( callbackIt.hasNext() )
+		{
+			callbackIt.next().interactionOccured(origin, this);
+		}
 	}
 }
