@@ -18,13 +18,19 @@ public class PlayerController {
 	{
 		Iterator<Sprite> sceneObjects = scene.iterator();
 		boolean hitSides[] = new boolean[4];
+
+		
 		while ( sceneObjects.hasNext() )
 		{
 			Sprite thisObj = sceneObjects.next();
-			
+
 			if ( thisObj.isSolid() && !player.equals(thisObj) )
 			{
 				Side hitSide = player.sideOfContact(thisObj);
+				
+				if ( Keyboard.isKeyDown(Keyboard.KEY_E) )
+					thisObj.interact(player);
+					
 				if ( hitSide != Side.NONE )
 					hitSides[hitSide.ordinal()] = true;
 			}
@@ -32,22 +38,22 @@ public class PlayerController {
 		
 		if ( !hitSides[Side.BOTTOM.ordinal()] && Keyboard.isKeyDown(Keyboard.KEY_W) )
 		{
-			player.setY(player.getY()+0.05f);
+			player.setY(player.getY()+0.005f);
 		}
 		
 		if ( !hitSides[Side.RIGHT.ordinal()] && Keyboard.isKeyDown(Keyboard.KEY_A) )
 		{
-			player.setX(player.getX()-0.05f);
+			player.setX(player.getX()-0.005f);
 		}
 		
 		if ( !hitSides[Side.TOP.ordinal()] && Keyboard.isKeyDown(Keyboard.KEY_S) )
 		{
-			player.setY(player.getY()-0.05f);
+			player.setY(player.getY()-0.005f);
 		}
 
 		if ( !hitSides[Side.LEFT.ordinal()] && Keyboard.isKeyDown(Keyboard.KEY_D) )
 		{
-			player.setX(player.getX()+0.05f);
-		}
+			player.setX(player.getX()+0.005f);
+		}	
 	}
 }

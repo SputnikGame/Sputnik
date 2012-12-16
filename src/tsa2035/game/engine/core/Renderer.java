@@ -45,7 +45,7 @@ public class Renderer {
 	        	currentScene.render();
 
 	        	GL11.glFlush();
-	        	Display.sync(10);
+	        	Display.sync(60);
 	        	Display.update();
 	        }
 		}

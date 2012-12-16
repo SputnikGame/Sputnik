@@ -13,7 +13,7 @@ import tsa2035.game.engine.scene.background.SolidBackground;
 public abstract class Scene {
 	private HashMap<String, Sprite> objects = new HashMap<String, Sprite>();
 	private Background bg = new SolidBackground(Color.WHITE);
-
+	
 	PlayerController playerController = null;
 	
 	public Scene()

@@ -19,6 +19,7 @@ public class Sprite {
 	
 	private boolean solid = false;
 	private boolean interactable = false;
+	private boolean hidden = false;
 	
 	private BoundingBox boundingBox = new BoundingBox();
 	
@@ -83,6 +84,8 @@ public class Sprite {
 	
 	public void render(Scene parent)
 	{
+		if ( isHidden() ) return;
+		
 		if ( texture == null )
 			return;
 
@@ -146,6 +149,11 @@ public class Sprite {
 		collisionCallbacks.add(callback);
 	}
 	
+	public void registerInteractionCallback(InteractionCallback callback)
+	{
+		interactionCallbacks.add(callback);
+	}
+	
 	public void setScale(float scale)
 	{
 		this.scale = scale+1;
@@ -153,11 +161,13 @@ public class Sprite {
 	
 	public boolean contacting(Sprite other)
 	{
+		if ( isHidden() ) return false;
 		return boundingBox.contacting(other.getBoundingBox());
 	}
 	
 	public Side sideOfContact(Sprite other)
 	{
+		if ( isHidden() ) return Side.NONE;
 		return boundingBox.sideOfContact(other.getBoundingBox());
 	}
 	
@@ -176,6 +186,16 @@ public class Sprite {
 		solid = state;
 	}
 	
+	public void setHidden(boolean state)
+	{
+		hidden = state;
+	}
+	
+	public boolean isHidden()
+	{
+		return hidden;
+	}
+	
 	public boolean isInteractable()
 	{
 		return interactable;
@@ -188,7 +208,7 @@ public class Sprite {
 	
 	public void interact(Sprite origin)
 	{
-		if ( isInteractable() && !contacting(origin) )
+		if ( isHidden() && isInteractable() && !contacting(origin) )
 			return;
 		
 		Iterator<InteractionCallback> callbackIt = interactionCallbacks.iterator();
