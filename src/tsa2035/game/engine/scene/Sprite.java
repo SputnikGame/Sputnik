@@ -47,6 +47,11 @@ public class Sprite {
 		yPos = y;
 	}
 	
+	public void setTexture(Texture t)
+	{
+		texture = t;
+	}
+	
 	public Point getPosition()
 	{
 		return new Point(xPos, yPos);
