@@ -24,7 +24,7 @@ public class PlayerController {
 	{
 		Iterator<Sprite> sceneObjects = scene.iterator();
 		boolean hitSides[] = new boolean[4];
-
+		boolean freefall = false;
 		
 		while ( sceneObjects.hasNext() )
 		{
@@ -45,9 +45,10 @@ public class PlayerController {
 		if ( handleGravity && !hitSides[Side.TOP.ordinal()] )
 		{
 			player.setY(player.getY()-0.005f);
+			freefall = true;
 		}
 		
-		if ( !hitSides[Side.BOTTOM.ordinal()] && Keyboard.isKeyDown(Keyboard.KEY_W) )
+		if ( !hitSides[Side.BOTTOM.ordinal()] && Keyboard.isKeyDown(Keyboard.KEY_W) && !freefall )
 		{
 			player.setY(player.getY()+0.005f);
 		}
@@ -57,7 +58,7 @@ public class PlayerController {
 			player.setX(player.getX()-0.005f);
 		}
 		
-		if ( !hitSides[Side.TOP.ordinal()] && Keyboard.isKeyDown(Keyboard.KEY_S) )
+		if ( !hitSides[Side.TOP.ordinal()] && Keyboard.isKeyDown(Keyboard.KEY_S) && !freefall )
 		{
 			player.setY(player.getY()-0.005f);
 		}
