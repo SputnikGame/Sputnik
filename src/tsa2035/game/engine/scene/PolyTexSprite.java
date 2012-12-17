@@ -21,7 +21,7 @@ public class PolyTexSprite extends Sprite {
 		textures.put(name, t);
 	}
 	
-	public void switchTextureTo(String name)
+	public void setTexture(String name)
 	{
 		setTexture(textures.get(name));
 	}
