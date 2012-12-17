@@ -30,7 +30,7 @@ public class PlayerController {
 		{
 			Sprite thisObj = sceneObjects.next();
 
-			if ( thisObj.isSolid() && !player.equals(thisObj) )
+			if ( !thisObj.isHidden() && thisObj.isSolid() && !player.equals(thisObj) )
 			{
 				Side hitSide = player.sideOfContact(thisObj);
 				
