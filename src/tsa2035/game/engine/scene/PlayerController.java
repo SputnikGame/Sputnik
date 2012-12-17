@@ -8,10 +8,16 @@ import tsa2035.game.engine.bounding.Side;
 
 public class PlayerController {
 	Sprite player;
-	
+	boolean handleGravity;
 	public PlayerController(Sprite player)
 	{
+		this(player,true);
+	}
+	
+	public PlayerController(Sprite player, boolean enableGravity)
+	{
 		this.player = player;
+		this.handleGravity = enableGravity;
 	}
 	
 	public void poll(Scene scene)
@@ -34,6 +40,11 @@ public class PlayerController {
 				if ( hitSide != Side.NONE )
 					hitSides[hitSide.ordinal()] = true;
 			}
+		}
+		
+		if ( handleGravity && !hitSides[Side.TOP.ordinal()] )
+		{
+			player.setY(player.getY()-0.005f);
 		}
 		
 		if ( !hitSides[Side.BOTTOM.ordinal()] && Keyboard.isKeyDown(Keyboard.KEY_W) )
