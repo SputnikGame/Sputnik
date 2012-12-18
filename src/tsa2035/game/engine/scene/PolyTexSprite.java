@@ -16,6 +16,12 @@ public class PolyTexSprite extends Sprite {
 		addTexture("default", t);
 	}
 	
+	public PolyTexSprite(float x, float y, String textureName, Texture t, boolean solid)
+	{
+		this(x,y,t, solid);
+		addTexture(textureName, t);
+	}
+	
 	public PolyTexSprite addTexture(String name, Texture t)
 	{
 		textures.put(name, t);
