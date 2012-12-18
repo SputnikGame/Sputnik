@@ -223,7 +223,7 @@ public class Sprite {
 	
 	public void interact(Sprite origin)
 	{
-		if ( isHidden() && isInteractable() && !getBoundingBox().ableToInteract(origin.getBoundingBox()) )
+		if ( isHidden() || isInteractable() || !getBoundingBox().ableToInteract(origin.getBoundingBox()) )
 			return;
 		
 		doInteract(origin);
