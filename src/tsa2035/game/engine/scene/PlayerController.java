@@ -30,7 +30,7 @@ public class PlayerController {
 		{
 			Sprite thisObj = sceneObjects.next();
 
-			if ( !player.equals(thisObj) )
+			if ( !player.equals(thisObj) && !thisObj.isHidden() )
 			{
 				if ( Keyboard.isKeyDown(Keyboard.KEY_E) )
 					thisObj.interact(player);
