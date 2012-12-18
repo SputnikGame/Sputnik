@@ -41,15 +41,17 @@ public class Sprite {
 		setScale(1);
 	}
 	
-	public void setPosition(float x, float y)
+	public Sprite setPosition(float x, float y)
 	{
 		xPos = x;
 		yPos = y;
+		return this;
 	}
 	
-	public void setTexture(Texture t)
+	public Sprite setTexture(Texture t)
 	{
 		texture = t;
+		return this;
 	}
 	
 	public Point getPosition()
@@ -57,14 +59,16 @@ public class Sprite {
 		return new Point(xPos, yPos);
 	}
 	
-	public void setX(float x)
+	public Sprite setX(float x)
 	{
 		xPos = x;
+		return this;
 	}
 	
-	public void setY(float y)
+	public Sprite setY(float y)
 	{
 		yPos = y;
+		return this;
 	}
 	
 	public float getX()
@@ -149,19 +153,16 @@ public class Sprite {
 		glEnd();
 	}
 	
-	public void registerCollisionCallback(CollisionCallback callback)
+	public Sprite registerCollisionCallback(CollisionCallback callback)
 	{
 		collisionCallbacks.add(callback);
+		return this;
 	}
 	
-	public void registerInteractionCallback(InteractionCallback callback)
+	public Sprite registerInteractionCallback(InteractionCallback callback)
 	{
 		interactionCallbacks.add(callback);
-	}
-	
-	public void setScale(float scale)
-	{
-		this.scale = scale+1;
+		return this;
 	}
 	
 	public boolean contacting(Sprite other)
@@ -186,14 +187,28 @@ public class Sprite {
 		return solid;
 	}
 	
-	public void setSolid(boolean state)
+	public Sprite setScale(float scale)
 	{
-		solid = state;
+		this.scale = scale+1;
+		return this;
 	}
 	
-	public void setHidden(boolean state)
+	public Sprite setSolid(boolean state)
+	{
+		solid = state;
+		return this;
+	}
+	
+	public Sprite setHidden(boolean state)
 	{
 		hidden = state;
+		return this;
+	}
+	
+	public Sprite setInteractable(boolean state)
+	{
+		interactable = state;
+		return this;
 	}
 	
 	public boolean isHidden()
@@ -204,11 +219,6 @@ public class Sprite {
 	public boolean isInteractable()
 	{
 		return interactable;
-	}
-	
-	public void setInteractable(boolean state)
-	{
-		interactable = state;
 	}
 	
 	public void interact(Sprite origin)

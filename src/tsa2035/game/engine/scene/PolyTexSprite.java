@@ -16,13 +16,15 @@ public class PolyTexSprite extends Sprite {
 		addTexture("default", t);
 	}
 	
-	public void addTexture(String name, Texture t)
+	public PolyTexSprite addTexture(String name, Texture t)
 	{
 		textures.put(name, t);
+		return this;
 	}
 	
-	public void setTexture(String name)
+	public PolyTexSprite setTexture(String name)
 	{
 		setTexture(textures.get(name));
+		return this;
 	}
 }
