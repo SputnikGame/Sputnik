@@ -129,6 +129,7 @@ public class Sprite {
 				Side sideOfHit = Side.NONE;
 				if ( !obj.equals(this) && (sideOfHit = sideOfContact(obj)) != Side.NONE )
 				{
+					doHit(obj,sideOfHit);
 					Iterator<CollisionCallback> callbackIt = collisionCallbacks.iterator();
 					while ( callbackIt.hasNext() )
 						callbackIt.next().collisionOccured(this, obj, sideOfHit);
@@ -239,6 +240,11 @@ public class Sprite {
 	}
 	
 	public void doInteract(Sprite origin)
+	{
+		// Override me!
+	}
+	
+	public void doHit(Sprite origin, Side hitSide)
 	{
 		// Override me!
 	}
