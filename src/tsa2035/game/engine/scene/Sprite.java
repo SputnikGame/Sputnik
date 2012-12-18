@@ -124,12 +124,15 @@ public class Sprite {
 		while( sceneObjects.hasNext() )
 		{
 			Sprite obj = sceneObjects.next();
-			Side sideOfHit = Side.NONE;
-			if ( !obj.equals(this) && (sideOfHit = sideOfContact(obj)) != Side.NONE )
+			if ( obj.isSolid() )
 			{
-				Iterator<CollisionCallback> callbackIt = collisionCallbacks.iterator();
-				while ( callbackIt.hasNext() )
-					callbackIt.next().collisionOccured(this, obj, sideOfHit);
+				Side sideOfHit = Side.NONE;
+				if ( !obj.equals(this) && (sideOfHit = sideOfContact(obj)) != Side.NONE )
+				{
+					Iterator<CollisionCallback> callbackIt = collisionCallbacks.iterator();
+					while ( callbackIt.hasNext() )
+						callbackIt.next().collisionOccured(this, obj, sideOfHit);
+				}
 			}
 		}
 		
