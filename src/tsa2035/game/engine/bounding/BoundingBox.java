@@ -4,6 +4,8 @@ import static org.lwjgl.opengl.GL11.glVertex2f;
 
 import org.lwjgl.opengl.GL11;
 
+import tsa2035.game.engine.scene.Sprite;
+
 public class BoundingBox {
 	float lowestX,lowestY,highestX,highestY;
 	
@@ -91,6 +93,21 @@ public class BoundingBox {
 	public boolean contacting(BoundingBox box)
 	{
 		return sideOfContact(box) != Side.NONE;
+	}
+	
+	public boolean ableToInteract(BoundingBox box)
+	{
+		boolean checks[] = new boolean[4];  	
+		checks[0] = getLowestX()<box.getHighestX();	  	
+		checks[1] = getHighestX()>box.getLowestX();
+		checks[2] = getHighestY()>box.getLowestY();  	
+		checks[3] = getLowestY()<box.getHighestY();
+		for ( int i=0; i < checks.length; i++ )
+		{
+			if ( !checks[i] )
+				return false;
+		}
+		return true;
 	}
 	
 	public Side sideOfContact(BoundingBox box)

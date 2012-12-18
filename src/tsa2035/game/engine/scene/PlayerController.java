@@ -30,15 +30,18 @@ public class PlayerController {
 		{
 			Sprite thisObj = sceneObjects.next();
 
-			if ( thisObj.isSolid() && !player.equals(thisObj) )
+			if ( !player.equals(thisObj) )
 			{
-				Side hitSide = player.sideOfContact(thisObj);
-				
 				if ( Keyboard.isKeyDown(Keyboard.KEY_E) )
 					thisObj.interact(player);
 					
-				if ( hitSide != Side.NONE )
-					hitSides[hitSide.ordinal()] = true;
+				if ( thisObj.isSolid() )
+				{
+					Side hitSide = player.sideOfContact(thisObj);
+					
+					if ( hitSide != Side.NONE )
+						hitSides[hitSide.ordinal()] = true;
+				}
 			}
 		}
 		

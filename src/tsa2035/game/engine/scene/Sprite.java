@@ -213,13 +213,20 @@ public class Sprite {
 	
 	public void interact(Sprite origin)
 	{
-		if ( isHidden() && isInteractable() && !contacting(origin) )
+		if ( isHidden() && isInteractable() && !getBoundingBox().ableToInteract(origin.getBoundingBox()) )
 			return;
+		
+		doInteract(origin);
 		
 		Iterator<InteractionCallback> callbackIt = interactionCallbacks.iterator();
 		while ( callbackIt.hasNext() )
 		{
 			callbackIt.next().interactionOccured(origin, this);
 		}
+	}
+	
+	public void doInteract(Sprite origin)
+	{
+		// Override me!
 	}
 }
