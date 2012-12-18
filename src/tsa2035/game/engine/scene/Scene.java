@@ -26,9 +26,10 @@ public abstract class Scene {
 		this.bg = bg;
 	}
 	
-	public void addToScene(String name, Sprite sprite)
+	public Sprite addToScene(String name, Sprite sprite)
 	{
 		objects.put(name, sprite);
+		return sprite;
 	}
 	
 	public Sprite getObject(String name)
