@@ -4,8 +4,6 @@ import static org.lwjgl.opengl.GL11.glVertex2f;
 
 import org.lwjgl.opengl.GL11;
 
-import tsa2035.game.engine.scene.Sprite;
-
 public class BoundingBox {
 	float lowestX,lowestY,highestX,highestY;
 	

@@ -61,11 +61,6 @@ public class PlayerController {
 			player.setY(player.getY()-fallRate);
 		}
 		
-		if ( !hitSides[Side.BOTTOM.ordinal()] && Keyboard.isKeyDown(Keyboard.KEY_W) && !freefall )
-		{
-			player.setY(player.getY()+0.005f);
-		}
-		
 		if ( !hitSides[Side.RIGHT.ordinal()] && Keyboard.isKeyDown(Keyboard.KEY_A) )
 		{
 			player.setX(player.getX()-0.005f);
