@@ -9,6 +9,7 @@ import tsa2035.game.engine.bounding.Side;
 public class PlayerController {
 	Sprite player;
 	boolean handleGravity;
+	float fallRate = 0.00005f;
 	public PlayerController(Sprite player)
 	{
 		this(player,true);
@@ -45,10 +46,19 @@ public class PlayerController {
 			}
 		}
 		
-		if ( handleGravity && !hitSides[Side.TOP.ordinal()] )
+		freefall = (!hitSides[Side.TOP.ordinal()] && handleGravity);
+		
+		if ( freefall )
+			fallRate += (float) Math.sqrt(fallRate)/450;
+		else
+			fallRate = 0.00005f;
+		
+		if ( fallRate > 0.01 )
+			fallRate = 0.01f;
+		System.out.println(fallRate);
+		if ( freefall )
 		{
-			player.setY(player.getY()-0.005f);
-			freefall = true;
+			player.setY(player.getY()-fallRate);
 		}
 		
 		if ( !hitSides[Side.BOTTOM.ordinal()] && Keyboard.isKeyDown(Keyboard.KEY_W) && !freefall )
