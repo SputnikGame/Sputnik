@@ -7,16 +7,15 @@ import static org.lwjgl.opengl.GL11.glEnd;
 import static org.lwjgl.opengl.GL11.glTexCoord2f;
 import static org.lwjgl.opengl.GL11.glVertex2f;
 
+import tsa2035.game.engine.core.Renderer;
 import tsa2035.game.engine.texture.Texture;
 
 public class SpriteBackground implements Background {
 
 	Texture texture;
-	float repeatFactor;
-	public SpriteBackground(Texture bg, float repeatFactor)
+	public SpriteBackground(Texture bg)
 	{
 		texture = bg;
-		this.repeatFactor = repeatFactor;
 	}
 	
 	@Override
@@ -26,17 +25,19 @@ public class SpriteBackground implements Background {
 		glColor3f(1,1,1);
 		glBegin(GL_QUADS);
 		
+		float xRepeatFactor = (float)Renderer.getScreenX()/(float)texture.getWidth();
+		float yRepeatFactor = (float)Renderer.getScreenY()/(float)texture.getHeight();
 		
-		glTexCoord2f(repeatFactor, repeatFactor);
+		glTexCoord2f(xRepeatFactor, yRepeatFactor);
 		glVertex2f(-1,-1);
 
-		glTexCoord2f(0,repeatFactor);
+		glTexCoord2f(0,yRepeatFactor);
 		glVertex2f(1, -1);
 
 		glTexCoord2f(0, 0);
 		glVertex2f(1,1);
 
-		glTexCoord2f(repeatFactor, 0);	
+		glTexCoord2f(xRepeatFactor, 0);	
 		glVertex2f(-1,1);
 		
 		glEnd();
