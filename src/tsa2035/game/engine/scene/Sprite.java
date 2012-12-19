@@ -13,18 +13,18 @@ import tsa2035.game.engine.core.Renderer;
 import tsa2035.game.engine.texture.Texture;
 
 public class Sprite {
-	private Texture texture = null;
-	private float scale;
-	private float xPos, yPos;
+	protected Texture texture = null;
+	protected float scale;
+	protected float xPos, yPos;
 	
-	private boolean solid = false;
-	private boolean interactable = false;
-	private boolean hidden = false;
+	protected boolean solid = false;
+	protected boolean interactable = false;
+	protected boolean hidden = false;
 	
-	private BoundingBox boundingBox = new BoundingBox();
+	protected BoundingBox boundingBox = new BoundingBox();
 	
-	private ArrayList<CollisionCallback> collisionCallbacks = new ArrayList<CollisionCallback>();
-	private ArrayList<InteractionCallback> interactionCallbacks = new ArrayList<InteractionCallback>();
+	protected ArrayList<CollisionCallback> collisionCallbacks = new ArrayList<CollisionCallback>();
+	protected ArrayList<InteractionCallback> interactionCallbacks = new ArrayList<InteractionCallback>();
 	
 	public Sprite(float x, float y, Texture t)
 	{
