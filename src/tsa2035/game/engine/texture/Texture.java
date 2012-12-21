@@ -70,6 +70,6 @@ public class Texture {
 	
 	public int getHeight()
 	{
-		return image.getWidth();
+		return image.getHeight();
 	}
 }

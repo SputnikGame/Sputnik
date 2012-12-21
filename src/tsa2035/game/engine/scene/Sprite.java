@@ -101,9 +101,6 @@ public class Sprite {
 		float x = getWidth();
 		float y = getHeight();
 		
-		x= x/2;
-		y= y/2;
-		
 		float points[][] = {
 				{ x, y },
 				{ -x,y },
@@ -193,7 +190,7 @@ public class Sprite {
 	
 	public Sprite setScale(float scale)
 	{
-		this.scale = scale+1;
+		this.scale = scale;
 		return this;
 	}
 	
