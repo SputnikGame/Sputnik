@@ -11,19 +11,19 @@ import java.util.Iterator;
 
 import tsa2035.game.engine.bounding.Side;
 import tsa2035.game.engine.core.Renderer;
-import tsa2035.game.engine.texture.Texture;
+import tsa2035.game.engine.texture.StaticTexture;
 
 public class TexturedBlock extends Sprite {
 
 	float width,height;
 	
-	public TexturedBlock(float x, float y, float width, float height, Texture t, boolean solid) {
+	public TexturedBlock(float x, float y, float width, float height, StaticTexture t, boolean solid) {
 		super(x, y, t, solid);
 		this.width = width;
 		this.height = height;
 	}
 	
-	public TexturedBlock(float x, float y, float width, float height, Texture t) {
+	public TexturedBlock(float x, float y, float width, float height, StaticTexture t) {
 		super(x, y, t);
 		this.width = width;
 		this.height = height;

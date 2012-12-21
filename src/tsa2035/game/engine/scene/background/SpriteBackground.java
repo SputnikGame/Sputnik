@@ -8,12 +8,12 @@ import static org.lwjgl.opengl.GL11.glTexCoord2f;
 import static org.lwjgl.opengl.GL11.glVertex2f;
 
 import tsa2035.game.engine.core.Renderer;
-import tsa2035.game.engine.texture.Texture;
+import tsa2035.game.engine.texture.StaticTexture;
 
 public class SpriteBackground implements Background {
 
-	Texture texture;
-	public SpriteBackground(Texture bg)
+	StaticTexture texture;
+	public SpriteBackground(StaticTexture bg)
 	{
 		texture = bg;
 	}

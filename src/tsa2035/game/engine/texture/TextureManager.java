@@ -5,22 +5,22 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class TextureManager {
-	private static HashMap<String, Texture> textures = new HashMap<String, Texture>();
+	private static HashMap<String, StaticTexture> textures = new HashMap<String, StaticTexture>();
 	
-	public static Texture getTexture(String path) throws FileNotFoundException, IOException
+	public static StaticTexture getTexture(String path) throws FileNotFoundException, IOException
 	{
 		if ( textures.containsKey(path) )
 			return textures.get(path);
-		Texture t = new Texture(path);
+		StaticTexture t = new StaticTexture(path);
 		textures.put(path, t);
 		return t;
 	}
 
-	public static Texture getTextureFromResource(String path) throws FileNotFoundException, IOException
+	public static StaticTexture getTextureFromResource(String path) throws FileNotFoundException, IOException
 	{
 		if ( textures.containsKey(path) )
 			return textures.get(path);
-		Texture t = new Texture(TextureManager.class.getResourceAsStream(path));
+		StaticTexture t = new StaticTexture(TextureManager.class.getResourceAsStream(path));
 		textures.put(path, t);
 		return t;
 	}

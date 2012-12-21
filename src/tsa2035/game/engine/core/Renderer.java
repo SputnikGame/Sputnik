@@ -17,7 +17,6 @@ public class Renderer {
 		Renderer.screenY = screenY;
 		Display.setDisplayMode(new DisplayMode(screenX, screenY));
 		Display.create();
-		
 		GL11.glDisable(GL11.GL_DEPTH_TEST);
 		GL11.glEnable(GL11.GL_TEXTURE_2D);
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
