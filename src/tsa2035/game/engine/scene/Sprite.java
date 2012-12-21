@@ -245,4 +245,10 @@ public class Sprite {
 	{
 		// Override me!
 	}
+	
+	protected Sprite getObject(String name)
+	{
+		return Renderer.getScene().getObject(name);
+	}
+	
 }
