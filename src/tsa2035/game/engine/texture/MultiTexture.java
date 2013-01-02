@@ -29,4 +29,14 @@ public class MultiTexture implements Texture {
 			return;
 		textures.get(active).bind();
 	}
+
+	@Override
+	public int getWidth() {
+		return textures.get(active).getWidth();
+	}
+
+	@Override
+	public int getHeight() {
+		return textures.get(active).getWidth();
+	}
 }

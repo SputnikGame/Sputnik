@@ -10,10 +10,10 @@ import org.newdawn.slick.geom.Point;
 import tsa2035.game.engine.bounding.BoundingBox;
 import tsa2035.game.engine.bounding.Side;
 import tsa2035.game.engine.core.Renderer;
-import tsa2035.game.engine.texture.StaticTexture;
+import tsa2035.game.engine.texture.Texture;
 
 public class Sprite {
-	protected StaticTexture texture = null;
+	protected Texture texture = null;
 	protected float scale;
 	protected float xPos, yPos;
 	
@@ -26,12 +26,12 @@ public class Sprite {
 	protected ArrayList<CollisionCallback> collisionCallbacks = new ArrayList<CollisionCallback>();
 	protected ArrayList<InteractionCallback> interactionCallbacks = new ArrayList<InteractionCallback>();
 	
-	public Sprite(float x, float y, StaticTexture t)
+	public Sprite(float x, float y, Texture t)
 	{
 		this(x,y,t,false);
 	}
 	
-	public Sprite(float x, float y, StaticTexture t, boolean solid)
+	public Sprite(float x, float y, Texture t, boolean solid)
 	{
 		texture = t;
 		
@@ -48,7 +48,7 @@ public class Sprite {
 		return this;
 	}
 	
-	public Sprite setTexture(StaticTexture t)
+	public Sprite setTexture(Texture t)
 	{
 		texture = t;
 		return this;

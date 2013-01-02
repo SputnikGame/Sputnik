@@ -20,6 +20,7 @@ public class TextureManager {
 	{
 		if ( textures.containsKey(path) )
 			return textures.get(path);
+		System.out.println("Loading texture "+path);
 		StaticTexture t = new StaticTexture(TextureManager.class.getResourceAsStream(path));
 		textures.put(path, t);
 		return t;
