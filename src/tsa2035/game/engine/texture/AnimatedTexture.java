@@ -41,7 +41,6 @@ public class AnimatedTexture implements Texture {
 		if ( current > (textures.size()-1) )
 			current = 0;
 		textures.get(current).bind();
-		System.out.println(System.currentTimeMillis());
 	}
 
 	@Override

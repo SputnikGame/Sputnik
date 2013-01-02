@@ -55,7 +55,6 @@ public class PlayerController {
 		
 		if ( fallRate > 0.01 )
 			fallRate = 0.01f;
-		System.out.println(fallRate);
 		if ( freefall )
 		{
 			player.setY(player.getY()-fallRate);
