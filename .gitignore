@@ -2,3 +2,4 @@ src/tsa2035/game/content/testing
 bin
 .project
 .classpath
+.DS_Store
