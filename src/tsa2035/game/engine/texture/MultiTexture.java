@@ -39,4 +39,19 @@ public class MultiTexture implements Texture {
 	public int getHeight() {
 		return textures.get(active).getWidth();
 	}
+
+	@Override
+	public void fire() {
+		textures.get(active).fire();
+	}
+
+	@Override
+	public void start() {
+		textures.get(active).start();
+	}
+
+	@Override
+	public void stop() {
+		textures.get(active).stop();
+	}
 }

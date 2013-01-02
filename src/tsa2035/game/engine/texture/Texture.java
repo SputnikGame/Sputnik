@@ -5,4 +5,9 @@ public interface Texture {
 	
 	public int getWidth();
 	public int getHeight();
+	
+	public void fire();
+	public void start();
+	public void stop();
+	
 }

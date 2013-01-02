@@ -73,6 +73,6 @@ public class PlayerController {
 		if ( !hitSides[Side.LEFT.ordinal()] && Keyboard.isKeyDown(Keyboard.KEY_D) )
 		{
 			player.setX(player.getX()+0.005f);
-		}	
+		}
 	}
 }

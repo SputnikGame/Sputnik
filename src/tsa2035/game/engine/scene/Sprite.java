@@ -251,4 +251,9 @@ public class Sprite {
 		return Renderer.getScene().getObject(name);
 	}
 	
+	public Texture getTexture()
+	{
+		return texture;
+	}
+	
 }

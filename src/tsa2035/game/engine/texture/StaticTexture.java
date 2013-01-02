@@ -72,4 +72,19 @@ public class StaticTexture implements Texture {
 	{
 		return image.getHeight();
 	}
+
+	@Override
+	public void fire() {
+		System.out.println("A method for animated textures was called on static texture "+textureID);
+	}
+
+	@Override
+	public void start() {
+		System.out.println("A method for animated textures was called on static texture "+textureID);
+	}
+
+	@Override
+	public void stop() {
+		System.out.println("A method for animated textures was called on static texture "+textureID);
+	}
 }

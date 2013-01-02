@@ -9,10 +9,12 @@ public class AnimatedTexture implements Texture {
 	long switchRate = 0;
 	int current = 0;
 	long nextSwitch = 0;
+	
+	boolean running = false;
+	
 	public AnimatedTexture(String basePath, String animationName, int numberOfFrames, int fps) throws FileNotFoundException, IOException
 	{
 		switchRate = 1000/fps;
-		nextSwitch = System.currentTimeMillis()+switchRate;
 		for ( int i = 0; i < numberOfFrames; i++ )
 		{
 			textures.add(TextureManager.getTextureFromResource(basePath+"/"+animationName+"/"+animationName+getNumberWithLeadingZeros(i+1)+".png"));
@@ -32,17 +34,26 @@ public class AnimatedTexture implements Texture {
 	
 	public void bind()
 	{
-		if ( System.currentTimeMillis() > nextSwitch )
+		if ( running && System.currentTimeMillis() > nextSwitch )
 		{
 			nextSwitch = System.currentTimeMillis()+switchRate;
 			current++;
 		}
 		
 		if ( current > (textures.size()-1) )
+		{
 			current = 0;
+			running = false;
+		}
 		textures.get(current).bind();
 	}
-
+	
+	public void fire()
+	{
+		running = true;
+		nextSwitch = System.currentTimeMillis()+switchRate;
+	}
+	
 	@Override
 	public int getWidth() {
 		return textures.get(current).getWidth();
@@ -51,5 +62,15 @@ public class AnimatedTexture implements Texture {
 	@Override
 	public int getHeight() {
 		return textures.get(current).getHeight();
+	}
+
+	@Override
+	public void start() {
+		System.out.println("The start() call is not supported on AnimatedTexture objects. Use LoopedAnimatedTexture instead.");
+	}
+
+	@Override
+	public void stop() {
+		System.out.println("The stop() call is not supported on AnimatedTexture objects. Use LoopedAnimatedTexture instead.");
 	}
 }
