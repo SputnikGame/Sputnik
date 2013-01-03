@@ -21,7 +21,7 @@ public class MultiTexture implements Texture {
 	public void switchTo(String name)
 	{
 		active = name;
-	}
+	}	
 	
 	public void bind()
 	{

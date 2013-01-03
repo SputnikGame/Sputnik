@@ -7,6 +7,7 @@ import java.util.Iterator;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
+import tsa2035.game.engine.audio.SceneAudioManager;
 import tsa2035.game.engine.scene.background.Background;
 import tsa2035.game.engine.scene.background.SolidBackground;
 
@@ -14,8 +15,8 @@ public abstract class Scene {
 	private HashMap<String, Sprite> objects = new HashMap<String, Sprite>();
 	private Background bg = new SolidBackground(Color.WHITE);
 	
-	PlayerController playerController = null;
-	
+	SceneAudioManager audioManager = new SceneAudioManager();
+
 	public Scene()
 	{
 		
@@ -53,11 +54,7 @@ public abstract class Scene {
 			obj.render(this);
 			GL11.glPopMatrix();
 		}
-		
 		sceneLogic();
-		
-		if ( playerController != null )
-			playerController.poll(this);
 		
 	}
 	
@@ -66,8 +63,8 @@ public abstract class Scene {
 		return objects.values().iterator();
 	}
 	
-	public void setPlayer(PlayerController pc)
+	public SceneAudioManager getAudioManager()
 	{
-		playerController = pc;
+		return audioManager;
 	}
 }
