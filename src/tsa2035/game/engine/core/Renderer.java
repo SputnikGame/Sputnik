@@ -2,6 +2,7 @@ package tsa2035.game.engine.core;
 
 import org.lwjgl.LWJGLException;
 import org.lwjgl.input.Keyboard;
+import org.lwjgl.openal.AL;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
@@ -50,6 +51,7 @@ public class Renderer {
 		}
 		
 		Display.destroy();
+		AL.destroy();
 		System.exit(0);
 	}
 
