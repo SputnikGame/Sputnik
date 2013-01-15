@@ -3,11 +3,9 @@ package tsa2035.game.engine.fontparser;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class BitmapFontData {
-	private ArrayList<String> pages = new ArrayList<String>();
 	private HashMap<Character, HashMap<String, Integer>> glyphData = new HashMap<Character, HashMap<String, Integer>>();
 	
 	public BitmapFontData(String filePath) throws IOException
