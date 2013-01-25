@@ -2,7 +2,7 @@ package tsa2035.game.content.core;
 
 import org.lwjgl.LWJGLException;
 
-import tsa2035.game.content.levels.Level1;
+import tsa2035.game.content.levels.level1.Level1;
 import tsa2035.game.engine.core.Renderer;
 
 public class Game {
