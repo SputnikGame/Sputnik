@@ -12,9 +12,22 @@ public class Player extends Sprite {
 	boolean handleGravity;
 	float fallRate = 0.00005f;
 	
+	float jumpHeight = 0;
+	float jumpRate = 0;
+	boolean isJumping = false;
+	float currentJumpOffset = 0f;
+	float lastJumpOffset = 0;
+	
 	public Player(float x, float y, Texture t, boolean handleGravity) {
 		super(x, y, t);
 		this.handleGravity = handleGravity;
+	}
+	
+	public Player(float x, float y, Texture t, boolean handleGravity, float jumpHeight, float jumpRate)
+	{
+		this(x,y,t, handleGravity);
+		this.jumpHeight = jumpHeight;
+		this.jumpRate = jumpRate;
 	}
 	
 	public void render(Scene scene)
@@ -22,7 +35,8 @@ public class Player extends Sprite {
 		Iterator<Sprite> sceneObjects = scene.iterator();
 		boolean hitSides[] = new boolean[4];
 		boolean freefall = false;
-		
+		boolean allowJumping = false;
+
 		while ( sceneObjects.hasNext() )
 		{
 			Sprite thisObj = sceneObjects.next();
@@ -35,8 +49,11 @@ public class Player extends Sprite {
 				if ( thisObj.isSolid() )
 				{
 					Side hitSide = sideOfContact(thisObj);
-					
-					
+
+					if ( hitSide == Side.BOTTOM )
+						isJumping = false;
+					if ( hitSide == Side.TOP )
+						allowJumping = true;
 					
 					if ( thisObj.isPushable() )
 					{
@@ -55,6 +72,9 @@ public class Player extends Sprite {
 			}
 		}
 		
+		if ( !isJumping )
+			isJumping = ( allowJumping && Keyboard.isKeyDown(Keyboard.KEY_SPACE) );
+		
 		freefall = (!hitSides[Side.TOP.ordinal()] && handleGravity);
 		
 		if ( freefall )
@@ -64,9 +84,23 @@ public class Player extends Sprite {
 		
 		if ( fallRate > 0.01 )
 			fallRate = 0.01f;
-		if ( freefall )
+		
+		if ( freefall && !isJumping )
 		{
 			setY(getY()-fallRate);
+		}
+		else if ( isJumping && jumpHeight > 0 )
+		{
+			currentJumpOffset += jumpRate;
+			setY((getY()-lastJumpOffset)+currentJumpOffset);
+			lastJumpOffset = currentJumpOffset;
+			System.out.println(currentJumpOffset);
+			if ( currentJumpOffset >= jumpHeight )
+			{
+				isJumping = false;
+				currentJumpOffset = 0;
+				lastJumpOffset = 0;
+			}
 		}
 		
 		if ( !hitSides[Side.RIGHT.ordinal()] && Keyboard.isKeyDown(Keyboard.KEY_A) )
