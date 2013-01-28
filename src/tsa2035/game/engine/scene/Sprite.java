@@ -20,6 +20,7 @@ public class Sprite {
 	protected boolean solid = false;
 	protected boolean interactable = false;
 	protected boolean hidden = false;
+	protected boolean pushable = false;
 	
 	protected BoundingBox boundingBox = new BoundingBox();
 	
@@ -256,4 +257,14 @@ public class Sprite {
 		return texture;
 	}
 	
+	public boolean isPushable()
+	{
+		return pushable;
+	}
+	
+	public void setPushable(boolean state)
+	{
+		pushable = state;
+		setSolid(true);
+	}
 }

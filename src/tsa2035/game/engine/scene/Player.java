@@ -26,7 +26,7 @@ public class Player extends Sprite {
 		while ( sceneObjects.hasNext() )
 		{
 			Sprite thisObj = sceneObjects.next();
-
+ 
 			if ( !this.equals(thisObj) && !thisObj.isHidden() )
 			{
 				if ( Keyboard.isKeyDown(Keyboard.KEY_E) )
@@ -36,7 +36,20 @@ public class Player extends Sprite {
 				{
 					Side hitSide = sideOfContact(thisObj);
 					
-					if ( hitSide != Side.NONE )
+					
+					
+					if ( thisObj.isPushable() )
+					{
+						if ( hitSide == Side.LEFT )
+						{
+							thisObj.setX(getX()+(getWidth()*2));
+						}
+						else if ( hitSide == Side.RIGHT )
+						{
+							thisObj.setX(getX()-(getWidth()*2));
+						}
+					}
+					else if ( hitSide != Side.NONE )
 						hitSides[hitSide.ordinal()] = true;
 				}
 			}
