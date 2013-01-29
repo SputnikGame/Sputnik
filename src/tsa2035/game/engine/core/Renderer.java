@@ -12,6 +12,9 @@ import tsa2035.game.engine.scene.Scene;
 public class Renderer {
 	private static int screenX, screenY;
 	private static Scene currentScene = null;
+	private static Scene nextScene = null;
+	private static float currentAlpha = 1;
+	private static int switchState = -1;
 	public static void init(int screenX, int screenY) throws LWJGLException
 	{
 		Renderer.screenX = screenX;
@@ -35,6 +38,32 @@ public class Renderer {
 	        
 	        if ( currentScene != null )
 	        {
+	        	
+	        	switch ( switchState )
+	        	{
+	        		case 0:
+	        			currentScene.massSetAlpha(currentAlpha);
+	        			currentAlpha -= 0.01;
+	        			if ( currentAlpha <= 0 )
+	        				switchState++;
+	        			break;
+	        		case 1:
+	        			if ( nextScene == null )
+	        				switchState = -1;
+	        			else
+	        			{
+		        			nextScene.massSetAlpha(0);
+		        			setScene(nextScene);
+		        			switchState++;
+	        			}
+	        			break;
+	        		case 2:
+	        			currentScene.massSetAlpha(currentAlpha);
+	        			currentAlpha += 0.01;
+	        			if ( currentAlpha >= 1 )
+	        				switchState = -1;
+	        			break;
+	        	}
 	        	
 	        	if ( !Keyboard.isCreated() )
 	        		Keyboard.create();
@@ -73,5 +102,12 @@ public class Renderer {
 	public static Scene getScene()
 	{
 		return currentScene;
+	}
+	
+	public static void animatedSceneSwitch(Scene newScene)
+	{
+		nextScene = newScene;
+		switchState = 0;
+		currentAlpha = 1;
 	}
 }

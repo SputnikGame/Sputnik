@@ -94,7 +94,7 @@ public class Player extends Sprite {
 			currentJumpOffset += jumpRate;
 			setY((getY()-lastJumpOffset)+currentJumpOffset);
 			lastJumpOffset = currentJumpOffset;
-			System.out.println(currentJumpOffset);
+
 			if ( currentJumpOffset >= jumpHeight )
 			{
 				isJumping = false;

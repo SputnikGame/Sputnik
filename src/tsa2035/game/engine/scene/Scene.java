@@ -6,20 +6,18 @@ import java.util.Iterator;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
-
 import tsa2035.game.engine.audio.SceneAudioManager;
 import tsa2035.game.engine.scene.background.Background;
 import tsa2035.game.engine.scene.background.SolidBackground;
 
 public abstract class Scene {
 	private HashMap<String, Sprite> objects = new HashMap<String, Sprite>();
-	private Background bg = new SolidBackground(Color.WHITE);
-	
+	private Background bg = new SolidBackground(Color.BLACK);
 	SceneAudioManager audioManager = new SceneAudioManager();
 
 	public Scene()
 	{
-		
+
 	}
 	
 	public void setBackground(Background bg)
@@ -55,7 +53,6 @@ public abstract class Scene {
 			GL11.glPopMatrix();
 		}
 		sceneLogic();
-		
 	}
 	
 	public Iterator<Sprite> iterator()
@@ -66,5 +63,14 @@ public abstract class Scene {
 	public SceneAudioManager getAudioManager()
 	{
 		return audioManager;
+	}
+	
+	public void massSetAlpha(float alpha)
+	{
+		Iterator<Sprite> it = iterator();
+		while ( it.hasNext() )
+		{
+			it.next().setAlpha(alpha);
+		}
 	}
 }
