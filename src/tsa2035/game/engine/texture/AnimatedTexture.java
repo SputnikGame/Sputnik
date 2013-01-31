@@ -17,7 +17,7 @@ public class AnimatedTexture implements Texture {
 		switchRate = 1000/fps;
 		for ( int i = 0; i < numberOfFrames; i++ )
 		{
-			textures.add(TextureManager.getTextureFromResource(basePath+"/"+animationName+"/"+animationName+getNumberWithLeadingZeros(i+1)+".png"));
+			textures.add(TextureManager.getTextureFromResource(basePath+"/"+animationName+getNumberWithLeadingZeros(i+1)+".png"));
 		}
 	}
 	

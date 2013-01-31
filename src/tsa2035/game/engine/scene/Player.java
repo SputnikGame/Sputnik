@@ -18,6 +18,9 @@ public class Player extends Sprite {
 	float currentJumpOffset = 0f;
 	float lastJumpOffset = 0;
 	
+	protected boolean isWalking = false;
+	protected boolean leftWalking = false;
+	
 	public Player(float x, float y, Texture t, boolean handleGravity) {
 		super(x, y, t);
 		this.handleGravity = handleGravity;
@@ -94,7 +97,6 @@ public class Player extends Sprite {
 			currentJumpOffset += jumpRate;
 			setY((getY()-lastJumpOffset)+currentJumpOffset);
 			lastJumpOffset = currentJumpOffset;
-			System.out.println(currentJumpOffset);
 			if ( currentJumpOffset >= jumpHeight )
 			{
 				isJumping = false;
@@ -103,9 +105,12 @@ public class Player extends Sprite {
 			}
 		}
 		
+		isWalking = false;
 		if ( !hitSides[Side.RIGHT.ordinal()] && Keyboard.isKeyDown(Keyboard.KEY_A) )
 		{
 			setX(getX()-0.005f);
+			isWalking = true;
+			leftWalking = true;
 		}
 		
 		if ( !hitSides[Side.TOP.ordinal()] && Keyboard.isKeyDown(Keyboard.KEY_S) && !freefall )
@@ -116,6 +121,8 @@ public class Player extends Sprite {
 		if ( !hitSides[Side.LEFT.ordinal()] && Keyboard.isKeyDown(Keyboard.KEY_D) )
 		{
 			setX(getX()+0.005f);
+			isWalking = true;
+			leftWalking = false;
 		}
 		
 		super.render(scene);

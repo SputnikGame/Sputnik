@@ -14,7 +14,7 @@ import tsa2035.game.engine.texture.Texture;
 
 public class Sprite {
 	protected Texture texture = null;
-	protected float scale;
+	protected float scale = 1;
 	protected float xPos, yPos;
 	
 	protected boolean solid = false;
