@@ -22,6 +22,8 @@ public class Sprite {
 	protected boolean hidden = false;
 	protected boolean pushable = false;
 	
+	protected float alpha = 1;
+	
 	protected BoundingBox boundingBox = new BoundingBox();
 	
 	protected ArrayList<CollisionCallback> collisionCallbacks = new ArrayList<CollisionCallback>();
@@ -136,7 +138,7 @@ public class Sprite {
 		}
 		
 		texture.bind();
-		glColor3f(1,1,1);
+		glColor4f(1,1,1,alpha);
 		glBegin(GL_QUADS);
 		
 		
@@ -262,9 +264,16 @@ public class Sprite {
 		return pushable;
 	}
 	
-	public void setPushable(boolean state)
+	public Sprite setPushable(boolean state)
 	{
 		pushable = state;
 		setSolid(true);
+		return this;
+	}
+	
+	public Sprite setAlpha(float alpha)
+	{
+		 this.alpha = alpha;
+		 return this;
 	}
 }
