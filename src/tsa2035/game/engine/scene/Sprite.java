@@ -264,14 +264,16 @@ public class Sprite {
 		return pushable;
 	}
 	
-	public void setPushable(boolean state)
+	public Sprite setPushable(boolean state)
 	{
 		pushable = state;
 		setSolid(true);
+		return this;
 	}
 	
-	public void setAlpha(float alpha)
+	public Sprite setAlpha(float alpha)
 	{
 		 this.alpha = alpha;
+		 return this;
 	}
 }
