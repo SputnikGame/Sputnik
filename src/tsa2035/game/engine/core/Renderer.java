@@ -13,7 +13,7 @@ public class Renderer {
 	private static int screenX, screenY;
 	private static Scene currentScene = null;
 	private static Scene nextScene = null;
-	private static float currentAlpha = 1;
+	private static float currentAlpha = 0;
 	private static int switchState = -1;
 	public static void init(int screenX, int screenY) throws LWJGLException
 	{
@@ -42,9 +42,9 @@ public class Renderer {
 	        	switch ( switchState )
 	        	{
 	        		case 0:
-	        			currentScene.massSetAlpha(currentAlpha);
-	        			currentAlpha -= 0.01;
-	        			if ( currentAlpha <= 0 )
+	        			currentScene.setSceneFade(currentAlpha);
+	        			currentAlpha += 0.01;
+	        			if ( currentAlpha >= 1 )
 	        				switchState++;
 	        			break;
 	        		case 1:
@@ -52,15 +52,15 @@ public class Renderer {
 	        				switchState = -1;
 	        			else
 	        			{
-		        			nextScene.massSetAlpha(0);
+		        			nextScene.setSceneFade(0);
 		        			setScene(nextScene);
 		        			switchState++;
 	        			}
 	        			break;
 	        		case 2:
-	        			currentScene.massSetAlpha(currentAlpha);
-	        			currentAlpha += 0.01;
-	        			if ( currentAlpha >= 1 )
+	        			currentScene.setSceneFade(currentAlpha);
+	        			currentAlpha -= 0.01;
+	        			if ( currentAlpha <= 0 )
 	        				switchState = -1;
 	        			break;
 	        	}
@@ -108,6 +108,6 @@ public class Renderer {
 	{
 		nextScene = newScene;
 		switchState = 0;
-		currentAlpha = 1;
+		currentAlpha = 0;
 	}
 }

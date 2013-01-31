@@ -1,5 +1,12 @@
 package tsa2035.game.engine.scene;
 
+import static org.lwjgl.opengl.GL11.GL_QUADS;
+import static org.lwjgl.opengl.GL11.glBegin;
+import static org.lwjgl.opengl.GL11.glColor4f;
+import static org.lwjgl.opengl.GL11.glEnd;
+import static org.lwjgl.opengl.GL11.glTexCoord2f;
+import static org.lwjgl.opengl.GL11.glVertex2f;
+
 import java.awt.Color;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -14,7 +21,7 @@ public abstract class Scene {
 	private HashMap<String, Sprite> objects = new HashMap<String, Sprite>();
 	private Background bg = new SolidBackground(Color.BLACK);
 	SceneAudioManager audioManager = new SceneAudioManager();
-
+	private float sceneFade = 0;
 	public Scene()
 	{
 
@@ -37,13 +44,26 @@ public abstract class Scene {
 	}
 	
 	public abstract void sceneLogic();
+	
+	private void renderSceneFade()
+	{
+		glColor4f(0,0,0,sceneFade);
+		glBegin(GL_QUADS);
+		
+		glVertex2f(1, 1);
+		glVertex2f(1, -1);
+		glVertex2f(-1, -1);
+		glVertex2f(-1, 1);
 
+		glEnd();
+	}
+	
 	public void render()
 	{
 		Keyboard.poll();
 		
 		bg.render();
-
+		
 		Iterator<Sprite> it = objects.values().iterator();
 		while ( it.hasNext() )
 		{
@@ -52,6 +72,7 @@ public abstract class Scene {
 			obj.render(this);
 			GL11.glPopMatrix();
 		}
+		renderSceneFade();
 		sceneLogic();
 	}
 	
@@ -65,12 +86,8 @@ public abstract class Scene {
 		return audioManager;
 	}
 	
-	public void massSetAlpha(float alpha)
+	public void setSceneFade(float alpha)
 	{
-		Iterator<Sprite> it = iterator();
-		while ( it.hasNext() )
-		{
-			it.next().setAlpha(alpha);
-		}
+		sceneFade = alpha;
 	}
 }
