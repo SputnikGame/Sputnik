@@ -14,9 +14,9 @@ public class Level1 extends Scene {
 	{
 		try {
 			setBackground(new SpriteBackground(TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/wallpanels.png")));
-			addToScene("character", new MainCharacter(0,0));
+			addToScene("character", new MainCharacter(-0.8f, -0.5f));
 			addToScene("floor", new Sprite(0f, -0.98f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/floor.png"))).setSolid(true);
-			addToScene("canister", new Sprite(0f, -0.5f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/canister.png"))).setInteractable(true);
+			//addToScene("canister", new Sprite(0f, -0.5f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/canister.png"))).setInteractable(true);
 		} catch (IOException e) {
 			System.out.println("Texture loading failed!");
 			e.printStackTrace();

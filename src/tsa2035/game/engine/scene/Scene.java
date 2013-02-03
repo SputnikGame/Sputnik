@@ -21,7 +21,7 @@ public abstract class Scene {
 	private HashMap<String, Sprite> objects = new HashMap<String, Sprite>();
 	private Background bg = new SolidBackground(Color.BLACK);
 	SceneAudioManager audioManager = new SceneAudioManager();
-	private float sceneFade = 0;
+	private float sceneFade = 1;
 	public Scene()
 	{
 
@@ -60,6 +60,7 @@ public abstract class Scene {
 	
 	public void render()
 	{
+		GL11.glEnable(GL11.GL_TEXTURE_2D);
 		Keyboard.poll();
 		
 		bg.render();
@@ -72,6 +73,7 @@ public abstract class Scene {
 			obj.render(this);
 			GL11.glPopMatrix();
 		}
+		GL11.glDisable(GL11.GL_TEXTURE_2D);
 		renderSceneFade();
 		sceneLogic();
 	}
