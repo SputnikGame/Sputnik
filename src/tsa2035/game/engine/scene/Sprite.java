@@ -24,6 +24,10 @@ public class Sprite {
 	
 	protected float alpha = 1;
 	
+	protected int layer = 1;
+	
+	protected String name;
+	
 	protected BoundingBox boundingBox = new BoundingBox();
 	
 	protected ArrayList<CollisionCallback> collisionCallbacks = new ArrayList<CollisionCallback>();
@@ -275,5 +279,26 @@ public class Sprite {
 	{
 		 this.alpha = alpha;
 		 return this;
+	}
+	
+	public int getLayer()
+	{
+		return layer;
+	}
+	
+	public Sprite setLayer(int layer)
+	{
+		this.layer = layer;
+		return this;
+	}
+	
+	public String getName()
+	{
+		return name;
+	}
+	
+	public void setName(String name)
+	{
+		this.name = name;
 	}
 }

@@ -1,4 +1,4 @@
-package tsa2035.game.engine.scene;
+			package tsa2035.game.engine.scene;
 
 import static org.lwjgl.opengl.GL11.GL_QUADS;
 import static org.lwjgl.opengl.GL11.glBegin;
@@ -8,6 +8,9 @@ import static org.lwjgl.opengl.GL11.glTexCoord2f;
 import static org.lwjgl.opengl.GL11.glVertex2f;
 
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -18,7 +21,7 @@ import tsa2035.game.engine.scene.background.Background;
 import tsa2035.game.engine.scene.background.SolidBackground;
 
 public abstract class Scene {
-	private HashMap<String, Sprite> objects = new HashMap<String, Sprite>();
+	private ArrayList<Sprite> objects = new ArrayList<Sprite>();
 	private Background bg = new SolidBackground(Color.BLACK);
 	SceneAudioManager audioManager = new SceneAudioManager();
 	private float sceneFade = 1;
@@ -34,13 +37,26 @@ public abstract class Scene {
 	
 	public Sprite addToScene(String name, Sprite sprite)
 	{
-		objects.put(name, sprite);
+		objects.add(sprite);
+		Collections.sort(objects, new Comparator<Sprite>() {
+
+	        public int compare(Sprite o1, Sprite o2) {
+	            return o1.getLayer()-o2.getLayer();
+	        }
+	    });
 		return sprite;
 	}
 	
 	public Sprite getObject(String name)
 	{
-		return objects.get(name);
+		Iterator it = iterator();
+		while ( it.hasNext() )
+		{
+			Sprite thisSprite = (Sprite) it.next();
+			if ( thisSprite.getName().equals(name) )
+				return thisSprite;
+		}
+		return null;
 	}
 	
 	public abstract void sceneLogic();
@@ -65,7 +81,7 @@ public abstract class Scene {
 		
 		bg.render();
 		
-		Iterator<Sprite> it = objects.values().iterator();
+		Iterator<Sprite> it = objects.iterator();
 		while ( it.hasNext() )
 		{
 			GL11.glPushMatrix();
@@ -80,7 +96,7 @@ public abstract class Scene {
 	
 	public Iterator<Sprite> iterator()
 	{
-		return objects.values().iterator();
+		return objects.iterator();
 	}
 	
 	public SceneAudioManager getAudioManager()
