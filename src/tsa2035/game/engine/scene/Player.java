@@ -39,9 +39,19 @@ public class Player extends Sprite {
 		handleGravity = state;
 	}
 	
+	public boolean isHandlingGravity()
+	{
+		return handleGravity;
+	}
+	
 	public void setJumpingDisabled(boolean state)
 	{
 		jumpingDisabled = state;
+	}
+	
+	public boolean isJumpingDisabled()
+	{
+		return jumpingDisabled;
 	}
 	
 	public void render(Scene scene)
