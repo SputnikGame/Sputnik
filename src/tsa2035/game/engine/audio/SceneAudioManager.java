@@ -9,7 +9,7 @@ import org.newdawn.slick.openal.Audio;
 public class SceneAudioManager {
 	public HashMap<String, Audio> backgroundSounds = new HashMap<String, Audio>();
 	public ArrayList<Audio> activeEffects = new ArrayList<Audio>();
-	public float backgroundVolume = 0.7f;
+	public float backgroundVolume = 1.0f;
 	public float effectVolume = 1.0f;
 	
 	public float getBackgroundMusicVolume()
@@ -68,5 +68,10 @@ public class SceneAudioManager {
 			if ( !thisSound.isPlaying() )
 				it.remove();
 		}
+	}
+	
+	public void cleanUp()
+	{
+		stopAll();
 	}
 }
