@@ -24,7 +24,7 @@ public class DemoLevel extends Scene {
 			addToScene("ladder2", new Ladder(0.45f, -0.46f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/ladder_long.png"), "character", "platform2")).setInteractable(true);
 			addToScene("pipes", new Sprite(0f, 0.89f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/pipes.png"))).setSolid(true).setLayer(0);
 			addToScene("vents", new Sprite(0f, 0.7f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/vents.png"))).setSolid(true).setLayer(-1);
-			addToScene("door", new Sprite(0.75f, 0.315f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/door.png"))).setLayer(-2);
+			addToScene("door", new Sprite(0.75f, 0.315f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/door.png"))).setLayer(1);
 			addToScene("platform1", new Sprite(-0.7f, -0.34f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/platform200.png"))).setSolid(true);
 			addToScene("platform2", new Sprite(0.645f, 0f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/platform250.png"))).setSolid(true);
 			addToScene("crate", new Sprite(-0.75f, -0.85f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f);

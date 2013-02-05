@@ -23,13 +23,14 @@ public class Level1 extends Scene {
 			setBackground(new SpriteBackground(TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/wallpanels.png")));
 			addToScene("character", new MainCharacter(-0.7f, -0.5f)).setLayer(10);
 			addToScene("floor", new Sprite(0f, -0.98f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/floor.png"))).setSolid(true);
-			addToScene("pipes", new Sprite(0f, 0.89f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/pipes.png"))).setSolid(true);
-			addToScene("vents", new Sprite(0f, 0.7f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/vents.png"))).setSolid(true);
-			addToScene("wasd", new Sprite(-0.7f, 0.2f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/wasd.png")));
+			addToScene("pipes", new Sprite(0f, 0.89f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/pipes.png"))).setSolid(true).setLayer(11);
+			addToScene("vents", new Sprite(0f, 0.7f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/vents.png"))).setSolid(true).setLayer(10);
+			addToScene("wasd", new Sprite(-0.7f, 0.1f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/wasd.png")));
 			addToScene("ladder", new Ladder(0.45f, -0.46f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/ladder_long.png"), "character", "platform")).setInteractable(true);
 			addToScene("platform", new Sprite(0.6f, 0f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/platform200.png"))).setSolid(true);
+			addToScene("steps", new Sprite(-0.5f, -0.62f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/steps.png"))).setScale(0.8f);
+			
 			addToScene("door", new Sprite(0.65f, 0.368f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/door.png"))).setInteractable(true);
-
 			getObject("door").registerInteractionCallback(new InteractionCallback()
 			{
 
