@@ -15,6 +15,7 @@ public class Player extends Sprite {
 	float jumpHeight = 0;
 	float jumpRate = 0;
 	boolean isJumping = false;
+	boolean jumpingDisabled = false;
 	float currentJumpOffset = 0f;
 	float lastJumpOffset = 0;
 	
@@ -31,6 +32,16 @@ public class Player extends Sprite {
 		this(x,y,t, handleGravity);
 		this.jumpHeight = jumpHeight;
 		this.jumpRate = jumpRate;
+	}
+	
+	public void setGravity(boolean state)
+	{
+		handleGravity = state;
+	}
+	
+	public void setJumpingDisabled(boolean state)
+	{
+		jumpingDisabled = state;
 	}
 	
 	public void render(Scene scene)
@@ -75,6 +86,9 @@ public class Player extends Sprite {
 			}
 		}
 		
+		if ( jumpingDisabled )
+			allowJumping = false;
+		
 		if ( !isJumping )
 			isJumping = ( allowJumping && Keyboard.isKeyDown(Keyboard.KEY_SPACE) );
 		
@@ -117,6 +131,11 @@ public class Player extends Sprite {
 		if ( !hitSides[Side.TOP.ordinal()] && Keyboard.isKeyDown(Keyboard.KEY_S) && !freefall )
 		{
 			setY(getY()-0.005f);
+		}
+		
+		if (  Keyboard.isKeyDown(Keyboard.KEY_W) && !handleGravity )
+		{
+			setY(getY()+0.005f);
 		}
 
 		if ( !hitSides[Side.LEFT.ordinal()] && Keyboard.isKeyDown(Keyboard.KEY_D) )
