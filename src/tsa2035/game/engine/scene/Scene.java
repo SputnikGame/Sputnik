@@ -37,6 +37,7 @@ public abstract class Scene {
 	
 	public Sprite addToScene(String name, Sprite sprite)
 	{
+		sprite.setName(name);
 		objects.add(sprite);
 		Collections.sort(objects, new Comparator<Sprite>() {
 
