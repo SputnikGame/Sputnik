@@ -25,14 +25,14 @@ public class Level1 extends Scene {
 			addToScene("pipes", new Sprite(0f, 0.89f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/pipes.png"))).setSolid(true).setLayer(0);
 			addToScene("vents", new Sprite(0f, 0.7f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/vents.png"))).setSolid(true).setLayer(-1);
 			addToScene("wasd", new Sprite(-0.7f, 0.2f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/wasd.png")));
-			addToScene("door", new Sprite(0.75f, -0.58f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/door.png"))).setLayer(-2).setSolid(true);
+			addToScene("door", new Sprite(0.75f, -0.58f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/door.png"))).setLayer(-2).setInteractable(true);
 
-			getObject("door").registerCollisionCallback(new CollisionCallback()
+			getObject("door").registerInteractionCallback(new InteractionCallback()
 			{
 
 				@Override
-				public void collisionOccured(Sprite registeredObject,
-						Sprite withObject, Side onSide) {
+				public void interactionOccured(Sprite registeredObject,
+						Sprite withObject) {
 					Renderer.animatedSceneSwitch(new Level2());
 					
 				}
