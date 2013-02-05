@@ -26,7 +26,7 @@ public class Sprite {
 	
 	protected int layer = 1;
 	
-	protected String name;
+	protected String name = "";
 	
 	protected BoundingBox boundingBox = new BoundingBox();
 	
@@ -300,5 +300,10 @@ public class Sprite {
 	public void setName(String name)
 	{
 		this.name = name;
+	}
+	
+	public void cleanUp()
+	{
+		
 	}
 }

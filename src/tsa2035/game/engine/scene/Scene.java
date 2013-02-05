@@ -1,17 +1,9 @@
 package tsa2035.game.engine.scene;
 
-import static org.lwjgl.opengl.GL11.GL_QUADS;
-import static org.lwjgl.opengl.GL11.glBegin;
-import static org.lwjgl.opengl.GL11.glColor4f;
-import static org.lwjgl.opengl.GL11.glEnd;
-import static org.lwjgl.opengl.GL11.glTexCoord2f;
-import static org.lwjgl.opengl.GL11.glVertex2f;
-
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.Iterator;
 
 import org.lwjgl.input.Keyboard;
@@ -24,7 +16,7 @@ public abstract class Scene {
 	private ArrayList<Sprite> objects = new ArrayList<Sprite>();
 	private Background bg = new SolidBackground(Color.BLACK);
 	SceneAudioManager audioManager = new SceneAudioManager();
-	private float sceneFade = 1;
+	
 	public Scene()
 	{
 
@@ -50,7 +42,7 @@ public abstract class Scene {
 	
 	public Sprite getObject(String name)
 	{
-		Iterator it = iterator();
+		Iterator<Sprite> it = iterator();
 		while ( it.hasNext() )
 		{
 			Sprite thisSprite = (Sprite) it.next();
@@ -87,5 +79,15 @@ public abstract class Scene {
 	public SceneAudioManager getAudioManager()
 	{
 		return audioManager;
+	}
+	
+	public void cleanUp()
+	{
+		Iterator<Sprite> it = iterator();
+		while ( it.hasNext() )
+		{
+			it.next().cleanUp();
+		}
+				
 	}
 }
