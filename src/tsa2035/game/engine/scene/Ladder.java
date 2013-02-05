@@ -34,14 +34,12 @@ public class Ladder extends Sprite {
 			player.setGravity(true);
 			if ( platformName != null )
 				platform.setSolid(true);
-			player.setJumpingDisabled(false);
 		}
 		else if ( contacting )
 		{
 			player.setGravity(false);
 			if ( platformName != null )
 				platform.setSolid(false);
-			player.setJumpingDisabled(true);
 		}
 		wasUsing = contacting;
 	}

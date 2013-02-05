@@ -105,7 +105,7 @@ public class Player extends Sprite {
 		freefall = (!hitSides[Side.TOP.ordinal()] && handleGravity);
 		
 		if ( freefall )
-			fallRate += (float) Math.sqrt(fallRate)/450;
+			fallRate += (float) Math.sqrt(fallRate)/300;
 		else
 			fallRate = 0.00005f;
 		
