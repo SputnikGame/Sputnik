@@ -14,7 +14,7 @@ public class Game {
 	 */
 	public static void main(String[] args) throws LWJGLException {
 		Renderer.init(800, 600);
-		Renderer.renderLoop(new DemoLevel());
+		Renderer.renderLoop(new Level1());
 	}
 
 }
