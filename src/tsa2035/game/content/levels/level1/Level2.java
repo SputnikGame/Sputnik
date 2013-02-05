@@ -24,7 +24,7 @@ public class Level2 extends Scene {
 			addToScene("floor", new Sprite(0f, -0.98f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/floor.png"))).setSolid(true);
 			addToScene("pipes", new Sprite(0f, 0.89f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/pipes.png"))).setSolid(true).setLayer(0);
 			addToScene("vents", new Sprite(0f, 0.7f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/vents.png"))).setSolid(true).setLayer(-1);
-			addToScene("space", new Sprite(-0.7f, 0.2f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/space.png")));
+			addToScene("space", new Sprite(-0.75f, 0.4f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/space.png")));
 			addToScene("door", new Sprite(0.75f, -0.58f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/door.png"))).setLayer(-2).setInteractable(true);
 			addToScene("crate1", new Sprite(0f, -0.85f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);
 			addToScene("crate2", new Sprite(-0.2f, -0.85f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);
@@ -39,11 +39,12 @@ public class Level2 extends Scene {
 			addToScene("crate10", new Sprite(0f, -0.43f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);
 			addToScene("crate11", new Sprite(-0.2f, -0.43f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);
 			addToScene("crate12", new Sprite(-0.4f, -0.43f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);
-			addToScene("crate13", new Sprite(-0.3f, -0.22f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);
+			addToScene("crate13", new Sprite(-0.38f, -0.22f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);
 			addToScene("crate14", new Sprite(0.15f, -0.22f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);
 			addToScene("crate15", new Sprite(0.3f, -0.645f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);
 			addToScene("crate16", new Sprite(0.2f, -0.43f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);
 			addToScene("crate17", new Sprite(-0.1f, -0.645f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);
+			addToScene("gosign", new Sprite(-0.1f, 0.3f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/go.png"))).setScale(0.8f);
 
 			getObject("door").registerInteractionCallback(new InteractionCallback()
 			{
