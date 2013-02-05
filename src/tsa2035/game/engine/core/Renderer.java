@@ -1,5 +1,11 @@
 package tsa2035.game.engine.core;
 
+import static org.lwjgl.opengl.GL11.GL_QUADS;
+import static org.lwjgl.opengl.GL11.glBegin;
+import static org.lwjgl.opengl.GL11.glColor4f;
+import static org.lwjgl.opengl.GL11.glEnd;
+import static org.lwjgl.opengl.GL11.glVertex2f;
+
 import org.lwjgl.LWJGLException;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.openal.AL;
@@ -28,6 +34,19 @@ public class Renderer {
 		GL11.glOrtho(0, screenX, screenY, 0, 0, 0);
 	}
 	
+	private static void renderSceneFade(float alpha)
+	{
+		glColor4f(0,0,0,alpha);
+		glBegin(GL_QUADS);
+		
+		glVertex2f(1, 1);
+		glVertex2f(1, -1);
+		glVertex2f(-1, -1);
+		glVertex2f(-1, 1);
+
+		glEnd();
+	}
+	
 	public static void renderLoop(Scene firstScene) throws LWJGLException
 	{
 		setScene(firstScene);
@@ -42,7 +61,6 @@ public class Renderer {
 	        	switch ( switchState )
 	        	{
 	        		case 0:
-	        			currentScene.setSceneFade(currentAlpha);
 	        			currentAlpha += 0.01;
 	        			if ( currentAlpha >= 1 )
 	        				switchState++;
@@ -52,13 +70,11 @@ public class Renderer {
 	        				switchState = -1;
 	        			else
 	        			{
-		        			nextScene.setSceneFade(0);
 		        			setScene(nextScene);
 		        			switchState++;
 	        			}
 	        			break;
 	        		case 2:
-	        			currentScene.setSceneFade(currentAlpha);
 	        			currentAlpha -= 0.01;
 	        			if ( currentAlpha <= 0 )
 	        				switchState = -1;
@@ -70,8 +86,10 @@ public class Renderer {
 	        	Keyboard.poll();
 	        	GL11.glMatrixMode(GL11.GL_MODELVIEW);
 	        	GL11.glLoadIdentity();
-	        	
+	        	GL11.glEnable(GL11.GL_TEXTURE_2D);
 	        	currentScene.render();
+	        	GL11.glDisable(GL11.GL_TEXTURE_2D);
+	        	renderSceneFade(currentAlpha);
 
 	        	GL11.glFlush();
 	        	Display.sync(60);
@@ -109,7 +127,6 @@ public class Renderer {
 		nextScene = newScene;
 		switchState = 0;
 		currentAlpha = 0;
-		newScene.setSceneFade(1);
 	}
 	
 	public static void jumpSceneSwitch(Scene newScene)
@@ -117,6 +134,5 @@ public class Renderer {
 		nextScene = newScene;
 		switchState = 0;
 		currentAlpha = 0;
-		newScene.setSceneFade(0);
 	}
 }

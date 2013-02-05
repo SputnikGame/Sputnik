@@ -62,22 +62,8 @@ public abstract class Scene {
 	
 	public abstract void sceneLogic();
 	
-	private void renderSceneFade()
-	{
-		glColor4f(0,0,0,sceneFade);
-		glBegin(GL_QUADS);
-		
-		glVertex2f(1, 1);
-		glVertex2f(1, -1);
-		glVertex2f(-1, -1);
-		glVertex2f(-1, 1);
-
-		glEnd();
-	}
-	
 	public void render()
 	{
-		GL11.glEnable(GL11.GL_TEXTURE_2D);
 		Keyboard.poll();
 		
 		bg.render();
@@ -90,8 +76,6 @@ public abstract class Scene {
 			obj.render(this);
 			GL11.glPopMatrix();
 		}
-		GL11.glDisable(GL11.GL_TEXTURE_2D);
-		renderSceneFade();
 		sceneLogic();
 	}
 	
@@ -103,10 +87,5 @@ public abstract class Scene {
 	public SceneAudioManager getAudioManager()
 	{
 		return audioManager;
-	}
-	
-	public void setSceneFade(float alpha)
-	{
-		sceneFade = alpha;
 	}
 }
