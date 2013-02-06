@@ -23,23 +23,42 @@ public class Level6 extends Scene {
 			setBackground(new SpriteBackground(TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/wallpanels.png")));
 			addToScene("character", new MainCharacter(-0.45f, -0.6f)).setLayer(10);
 			addToScene("floor", new Sprite(0f, -0.98f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/floor.png"))).setSolid(true);
-			addToScene("pipes", new Sprite(0f, 0.89f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/pipes.png"))).setSolid(true).setLayer(0);
-			addToScene("vents", new Sprite(0f, 0.7f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/vents.png"))).setLayer(-1);
-			addToScene("door", new Sprite(0.75f, -0.58f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/door.png"))).setLayer(-2).setInteractable(true);
+			addToScene("pipes", new Sprite(0f, 0.89f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/pipes.png"))).setLayer(2);
+			addToScene("vents", new Sprite(0f, 0.7f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/vents.png"))).setLayer(2);
+			addToScene("door", new Sprite(-0.78f, -0.58f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/door.png"))).setInteractable(true);
 			
-			
-
-			final PolyTexSprite switchbox = new PolyTexSprite(0.93f, 0.4f, "off", TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/switch_off.png"), false);
-			addToScene("switch", switchbox).setScale(0.5f).setInteractable(true);
-			switchbox.addTexture("on", TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/switch_on.png"));
-			switchbox.registerInteractionCallback(new InteractionCallback(){
+			addToScene("gosign", new Sprite(0f, 0.35f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/goleft.png"))).setScale(0.8f);
+			addToScene("wallpipes", new Sprite(0f, 0f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/wallpipes.png"))).setLayer(1);
+		
+			final PolyTexSprite mainpwr = new PolyTexSprite(-0.2f,-0.4f, "closed", TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/accessdoor_all_closed.png"), false);
+			addToScene("mainpower", mainpwr).setScale(0.5f).setInteractable(true);
+			mainpwr.addTexture("open", TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/accessdoor_mainpwr_open.png"));
+			mainpwr.registerInteractionCallback(new InteractionCallback(){
 			@Override
 			public void interactionOccured(Sprite interacter,
 			Sprite interactee) 
 			{
-			switchbox.setTexture("on");}});
+			mainpwr.setTexture("open");}});
 			
-			addToScene("gate", new Sprite(0.3f, -0.68f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/gate/gate0001.png"))).setSolid(true);
+			final PolyTexSprite auxpwr = new PolyTexSprite(0.15f,-0.4f, "closed", TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/accessdoor_all_closed.png"), false);
+			addToScene("auxpower", auxpwr).setScale(0.5f).setInteractable(true);
+			auxpwr.addTexture("open", TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/accessdoor_auxpwr_open.png"));
+			auxpwr.registerInteractionCallback(new InteractionCallback(){
+			@Override
+			public void interactionOccured(Sprite interacter,
+			Sprite interactee) 
+			{
+			auxpwr.setTexture("open");}});
+
+			final PolyTexSprite odist = new PolyTexSprite(0.498f,-0.4f, "closed", TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/accessdoor_dist_closed.png"), false);
+			addToScene("oxygendistributor", odist).setScale(0.5f).setInteractable(true);
+			odist.addTexture("open", TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/accessdoor_dist_open_nready.png"));
+			odist.registerInteractionCallback(new InteractionCallback(){
+			@Override
+			public void interactionOccured(Sprite interacter,
+			Sprite interactee) 
+			{
+				odist.setTexture("open");}});
 			
 			getObject("door").registerInteractionCallback(new InteractionCallback()
 			{
@@ -47,7 +66,7 @@ public class Level6 extends Scene {
 				@Override
 				public void interactionOccured(Sprite registeredObject,
 						Sprite withObject) {
-					Renderer.animatedSceneSwitch(new Level6());
+					Renderer.animatedSceneSwitch(new Level7());
 					
 				}
 				
