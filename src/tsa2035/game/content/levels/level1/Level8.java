@@ -46,8 +46,20 @@ public class Level8 extends Scene {
 
 			addToScene("crate1", new Sprite(-0.89f, -0.92f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/halfcrate.png"))).setScale(0.5f).setSolid(true);
 			addToScene("crate1", new Sprite(-0.67f, -0.92f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/halfcrate.png"))).setScale(0.5f).setSolid(true);
-			addToScene("crate1", new Sprite(-0.86f, -0.76f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);
+			addToScene("crate1", new Sprite(-0.8f, -0.76f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);
 
+			final PolyTexSprite switchbox = new PolyTexSprite(-0.8f,-0.0f, "off", TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/switch_off.png"), false);
+			addToScene("switch", switchbox).setScale(0.5f).setInteractable(true);
+			switchbox.addTexture("on", TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/switch_on.png"));
+			switchbox.registerInteractionCallback(new InteractionCallback(){
+			@Override
+			public void interactionOccured(Sprite interacter,
+			Sprite interactee) 
+			{
+			switchbox.setTexture("on");
+				((AnimatedTexture)getObject("gate").getTexture()).fire();
+			}});
+			
 			addToScene("gate", new Sprite(-0.52f, 0.425f, new AnimatedTexture("/tsa2035/game/content/images/gate", "gate", 35, 12))).setSolid(true);
 			((AnimatedTexture)getObject("gate").getTexture()).registerFinishedCallback(new AnimationFinishedCallback(){
 
