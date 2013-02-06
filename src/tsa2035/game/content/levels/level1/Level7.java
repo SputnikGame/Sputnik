@@ -28,6 +28,7 @@ public class Level7 extends Scene {
 			addToScene("vents", new Sprite(0f, 0.7f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/vents.png"))).setLayer(2);
 			addToScene("door", new Sprite(0.78f, -0.58f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/door.png"))).setInteractable(true);
 			
+			addToScene("gosign", new Sprite(0f, 0.35f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/go.png"))).setScale(0.8f);
 			addToScene("wallpipes", new Sprite(0f, 0f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/wallpipes2.png"))).setLayer(1);
 			addToScene("ogenerator", new Sprite(-0.48f, -0.5f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/oxygengenerator.png")));
 			addToScene("statuspanel", new Sprite(0.45f, -0.5f, new LoopedAnimatedTexture("/tsa2035/game/content/images/common", "statuspanel", 2, 2))).setScale(0.5f).setInteractable(true);
@@ -48,7 +49,7 @@ public class Level7 extends Scene {
 				@Override
 				public void interactionOccured(Sprite registeredObject,
 						Sprite withObject) {
-					Renderer.animatedSceneSwitch(new Level6());
+					Renderer.animatedSceneSwitch(new Level8());
 					
 				}
 				
