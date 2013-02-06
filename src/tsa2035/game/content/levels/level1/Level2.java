@@ -37,9 +37,9 @@ public class Level2 extends Scene {
 			addToScene("crate9", new Sprite(-0.3f, -0.645f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);
 			addToScene("crate9", new Sprite(-0.5f, -0.645f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);
 			addToScene("crate10", new Sprite(0f, -0.43f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);
-			addToScene("crate11", new Sprite(-0.2f, -0.43f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);
+			//addToScene("crate11", new Sprite(-0.2f, -0.43f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);
 			addToScene("crate12", new Sprite(-0.4f, -0.43f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);
-			addToScene("crate13", new Sprite(-0.38f, -0.22f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);
+			addToScene("crate13", new Sprite(-0.39f, -0.22f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);
 			addToScene("crate14", new Sprite(0.15f, -0.22f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);
 			addToScene("crate15", new Sprite(0.3f, -0.645f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);
 			addToScene("crate16", new Sprite(0.2f, -0.43f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);

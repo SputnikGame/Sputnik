@@ -29,7 +29,8 @@ public class Level1 extends Scene {
 			addToScene("ladder", new Ladder(0.45f, -0.46f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/ladder_long.png"), "character", "platform")).setInteractable(true);
 			addToScene("platform", new Sprite(0.6f, 0f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/platform200.png"))).setSolid(true);
 			addToScene("steps", new Sprite(-0.5f, -0.62f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/steps.png"))).setScale(0.8f);
-			addToScene("gosign", new Sprite(-0.1f, -0.3f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/go.png"))).setScale(0.8f);
+			addToScene("gosign", new Sprite(0.1f, -0.3f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/go.png"))).setScale(0.8f);
+			addToScene("crate", new Sprite(0.8f, -0.85f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);
 			addToScene("door", new Sprite(0.65f, 0.368f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/door.png"))).setInteractable(true);
 			getObject("door").registerInteractionCallback(new InteractionCallback()
 			{

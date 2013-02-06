@@ -20,7 +20,7 @@ public class DemoLevel extends Scene {
 			setBackground(new SpriteBackground(TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/wallpanels.png")));
 			addToScene("character", new MainCharacter(-0.7f, 0.15f)).setLayer(10);
 			addToScene("floor", new Sprite(0f, -0.98f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/floor.png"))).setSolid(true);
-			addToScene("ladder1", new Ladder(-0.55f, -0.64f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/ladder_short.png"), "character", "platform1")).setInteractable(true);
+			addToScene("ladder1", new Ladder(-0.55f, -0.64f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/ladder_medium.png"), "character", "platform1")).setInteractable(true);
 			addToScene("ladder2", new Ladder(0.45f, -0.46f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/ladder_long.png"), "character", "platform2")).setInteractable(true);
 			addToScene("pipes", new Sprite(0f, 0.89f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/pipes.png"))).setSolid(true).setLayer(0);
 			addToScene("vents", new Sprite(0f, 0.7f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/vents.png"))).setSolid(true).setLayer(-1);
@@ -40,7 +40,6 @@ public class DemoLevel extends Scene {
 			{
 			box.setTexture("open");}});
 
-			
 			final PolyTexSprite main = new PolyTexSprite(-0.15f,-0.4f, "closed", TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/accessdoor_all_closed.png"), false);
 			addToScene("auxbox", main).setScale(0.5f).setInteractable(true);
 			main.addTexture("open", TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/accessdoor_mainpwr_open.png"));
