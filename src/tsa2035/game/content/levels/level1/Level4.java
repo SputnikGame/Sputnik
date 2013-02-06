@@ -3,6 +3,7 @@ package tsa2035.game.content.levels.level1;
 import java.io.IOException;
 
 import tsa2035.game.content.levels.MainCharacter;
+import tsa2035.game.content.levels.meta.Status1;
 import tsa2035.game.engine.bounding.Side;
 import tsa2035.game.engine.core.Renderer;
 import tsa2035.game.engine.scene.CollisionCallback;
@@ -30,7 +31,7 @@ public class Level4 extends Scene {
 			addToScene("platform", new Sprite(-0.78f, -0.34f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/platform150.png"))).setSolid(true);
 			addToScene("ladder2", new Ladder(-0.69f, -0.64f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/ladder_medium.png"), "character", "platform")).setInteractable(true);
 			addToScene("ladder1", new Ladder(-0.87f, -0.13f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/ladder_short.png"), "character")).setInteractable(true);
-			addToScene("statuspanel", new Sprite(-0.87f, 0.5f, new LoopedAnimatedTexture("/tsa2035/game/content/images/common", "statuspanel", 2, 2))).setScale(0.5f);
+			addToScene("statuspanel", new Sprite(-0.87f, 0.5f, new LoopedAnimatedTexture("/tsa2035/game/content/images/common", "statuspanel", 2, 2))).setScale(0.5f).setInteractable(true);
 			addToScene("authorzied", new Sprite(0.75f, -0.1f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/authorized.png"))).setScale(0.7f);
 			addToScene("crate1", new Sprite(-0.2f, -0.85f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true).setLayer(5);
 			addToScene("crate2", new Sprite(0f, -0.85f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true).setLayer(5);
@@ -40,6 +41,16 @@ public class Level4 extends Scene {
 			addToScene("gosign", new Sprite(-0.1f, 0.3f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/go.png"))).setScale(0.8f);
 			addToScene("divider", new Sprite(0.45f, 0.1f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/divider.png"))).setScale(0.8f);
 
+			
+			getObject("statuspanel").registerInteractionCallback(new InteractionCallback(){
+
+				@Override
+				public void interactionOccured(Sprite interacter,
+						Sprite interactee) {
+					Renderer.animatedSceneSwitch(new Status1(Level4.this));
+					
+				}});
+			
 			
 			final PolyTexSprite gen1box = new PolyTexSprite(-0.2f,-0.4f, "closed", TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/accessdoor_all_closed.png"), false);
 			addToScene("gen1box", gen1box).setScale(0.5f).setInteractable(true);
