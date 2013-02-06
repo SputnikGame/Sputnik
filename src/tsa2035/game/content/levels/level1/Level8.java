@@ -12,6 +12,8 @@ import tsa2035.game.engine.scene.PolyTexSprite;
 import tsa2035.game.engine.scene.Scene;
 import tsa2035.game.engine.scene.Sprite;
 import tsa2035.game.engine.scene.background.SpriteBackground;
+import tsa2035.game.engine.texture.AnimatedTexture;
+import tsa2035.game.engine.texture.AnimationFinishedCallback;
 import tsa2035.game.engine.texture.LoopedAnimatedTexture;
 import tsa2035.game.engine.texture.TextureManager;
 
@@ -46,6 +48,15 @@ public class Level8 extends Scene {
 			addToScene("crate1", new Sprite(-0.67f, -0.92f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/halfcrate.png"))).setScale(0.5f).setSolid(true);
 			addToScene("crate1", new Sprite(-0.86f, -0.76f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);
 
+			addToScene("gate", new Sprite(-0.52f, 0.425f, new AnimatedTexture("/tsa2035/game/content/images/gate", "gate", 35, 12))).setSolid(true);
+			((AnimatedTexture)getObject("gate").getTexture()).registerFinishedCallback(new AnimationFinishedCallback(){
+
+				@Override
+				public void animationFinished(AnimatedTexture animation) {
+					getObject("gate").setSolid(false);
+					
+				}
+			});
 			
 			getObject("door").registerInteractionCallback(new InteractionCallback()
 			{

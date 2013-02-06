@@ -76,7 +76,6 @@ public class Level3 extends Scene {
 			}});
 			
 			
-			//Need to make gate animated when switch turned to on position (files located in game.content.images.gate)
 			addToScene("gate", new Sprite(0.45f, -0.68f, new AnimatedTexture("/tsa2035/game/content/images/gate", "gate", 35, 12))).setSolid(true);
 			((AnimatedTexture)getObject("gate").getTexture()).registerFinishedCallback(new AnimationFinishedCallback(){
 
