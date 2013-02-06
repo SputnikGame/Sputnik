@@ -30,7 +30,10 @@ public class Level3 extends Scene {
 			addToScene("door", new Sprite(0.75f, -0.58f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/door.png"))).setLayer(-2).setInteractable(true);
 			addToScene("noentry", new Sprite(0.75f, -0.1f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/noentry.png"))).setScale(0.8f);
 			addToScene("gosign", new Sprite(-0.559f, 0f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/go.png"))).setScale(0.8f);
-						
+			
+			addToScene("gosign", new Sprite(0f, 0f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/oxygenpuzzle/oxygenschematicA180.png"))).setScale(0.8f);
+
+			
 			getObject("door").registerInteractionCallback(new InteractionCallback()
 			{
 
