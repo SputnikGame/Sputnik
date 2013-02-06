@@ -3,6 +3,7 @@ package tsa2035.game.content.levels.level1;
 import java.io.IOException;
 
 import tsa2035.game.content.levels.MainCharacter;
+import tsa2035.game.content.levels.meta.Status2;
 import tsa2035.game.engine.bounding.Side;
 import tsa2035.game.engine.core.Renderer;
 import tsa2035.game.engine.scene.CollisionCallback;
@@ -29,7 +30,7 @@ public class Level7 extends Scene {
 			
 			addToScene("wallpipes", new Sprite(0f, 0f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/wallpipes2.png"))).setLayer(1);
 			addToScene("ogenerator", new Sprite(-0.48f, -0.5f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/oxygengenerator.png")));
-			addToScene("statuspanel", new Sprite(0.45f, -0.5f, new LoopedAnimatedTexture("/tsa2035/game/content/images/common", "statuspanel", 2, 2))).setScale(0.5f);
+			addToScene("statuspanel", new Sprite(0.45f, -0.5f, new LoopedAnimatedTexture("/tsa2035/game/content/images/common", "statuspanel", 2, 2))).setScale(0.5f).setInteractable(true);
 
 			final PolyTexSprite regen = new PolyTexSprite(0.1f,-0.42f, "closed", TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/accessdoor_all_closed.png"), false);
 			addToScene("regenpanel", regen).setScale(0.5f).setInteractable(true);
@@ -52,6 +53,15 @@ public class Level7 extends Scene {
 				}
 				
 			});
+			
+			getObject("statuspanel").registerInteractionCallback(new InteractionCallback(){
+
+				@Override
+				public void interactionOccured(Sprite interacter,
+						Sprite interactee) {
+					Renderer.animatedSceneSwitch(new Status2(Level7.this));
+					
+				}});
 			
 		} catch (IOException e) {
 			System.out.println("Texture loading failed!");
