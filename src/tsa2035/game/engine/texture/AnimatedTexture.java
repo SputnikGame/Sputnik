@@ -3,9 +3,11 @@ package tsa2035.game.engine.texture;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class AnimatedTexture implements Texture {
 	ArrayList<StaticTexture> textures = new ArrayList<StaticTexture>();
+	ArrayList<AnimationFinishedCallback> callbacks = new ArrayList<AnimationFinishedCallback>();
 	long switchRate = 0;
 	int current = 0;
 	long nextSwitch = 0;
@@ -21,6 +23,11 @@ public class AnimatedTexture implements Texture {
 		{
 			textures.add(TextureManager.getTextureFromResource(basePath+"/"+animationName+getNumberWithLeadingZeros(i+1)+".png"));
 		}
+	}
+	
+	public void registerFinishedCallback(AnimationFinishedCallback callback)
+	{
+		callbacks.add(callback);
 	}
 	
 	public String getNumberWithLeadingZeros(int num)
@@ -44,14 +51,20 @@ public class AnimatedTexture implements Texture {
 		
 		if ( current > (textures.size()-1) )
 		{
-			current = 0;
 			running = false;
+			current--;
+			Iterator<AnimationFinishedCallback> it = callbacks.iterator();
+			while ( it.hasNext() )
+			{
+				it.next().animationFinished(this);
+			}
 		}
 		textures.get(current).bind();
 	}
 	
 	public void fire()
 	{
+		current = 0;
 		running = true;
 		nextSwitch = System.currentTimeMillis()+switchRate;
 	}

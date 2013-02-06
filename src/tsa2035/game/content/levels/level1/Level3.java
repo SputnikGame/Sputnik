@@ -11,6 +11,8 @@ import tsa2035.game.engine.scene.PolyTexSprite;
 import tsa2035.game.engine.scene.Scene;
 import tsa2035.game.engine.scene.Sprite;
 import tsa2035.game.engine.scene.background.SpriteBackground;
+import tsa2035.game.engine.texture.AnimatedTexture;
+import tsa2035.game.engine.texture.AnimationFinishedCallback;
 import tsa2035.game.engine.texture.LoopedAnimatedTexture;
 import tsa2035.game.engine.texture.TextureManager;
 
@@ -71,12 +73,21 @@ public class Level3 extends Scene {
 			public void interactionOccured(Sprite interacter,
 			Sprite interactee) 
 			{
-			switchbox.setTexture("on");}});
+			switchbox.setTexture("on");
+				((AnimatedTexture)getObject("gate").getTexture()).fire();
+			}});
 			
 			
 			//Need to make gate animated when switch turned to on position (files located in game.content.images.gate)
-			addToScene("gate", new Sprite(0.45f, -0.68f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/gate/gate0001.png"))).setSolid(true);
-			
+			addToScene("gate", new Sprite(0.45f, -0.68f, new AnimatedTexture("/tsa2035/game/content/images/gate", "gate", 35, 12))).setSolid(true);
+			((AnimatedTexture)getObject("gate").getTexture()).registerFinishedCallback(new AnimationFinishedCallback(){
+
+				@Override
+				public void animationFinished(AnimatedTexture animation) {
+					getObject("gate").setSolid(false);
+					
+				}
+			});
 		} catch (IOException e) {
 			System.out.println("Texture loading failed!");
 			e.printStackTrace();
