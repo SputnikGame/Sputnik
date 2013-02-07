@@ -1,4 +1,4 @@
-package tsa2035.game.engine.core;
+package tsa2035.game.content.core;
 
 import java.io.IOException;
 
@@ -8,6 +8,7 @@ import org.lwjgl.opengl.Display;
 
 import tsa2035.game.content.levels.level1.Level1;
 import tsa2035.game.content.levels.level1.Level4;
+import tsa2035.game.engine.core.Renderer;
 import tsa2035.game.engine.scene.PolyTexSprite;
 import tsa2035.game.engine.scene.Scene;
 import tsa2035.game.engine.scene.SinglePressKeyboard;
@@ -22,6 +23,8 @@ public class Menu extends Scene {
 	int selected = 0;
 	public Menu()
 	{
+		Game.getAirMeter().stop();
+		Game.getAirMeter().setCurrentCallback(null);
 		try {
 			setBackground(new SpriteBackground(TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/wallpanels.png")));
 			
@@ -69,6 +72,8 @@ public class Menu extends Scene {
 			{
 				case 0: // Play
 					Renderer.animatedSceneSwitch(new Level4());
+					Game.getAirMeter().reset();
+					Game.getAirMeter().start();
 					break;
 				case 1: // Tut
 					Renderer.animatedSceneSwitch(new Level1());

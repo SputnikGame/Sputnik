@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import org.lwjgl.input.Keyboard;
 
+import tsa2035.game.content.core.Game;
 import tsa2035.game.engine.core.Renderer;
 import tsa2035.game.engine.scene.PolyTexSprite;
 import tsa2035.game.engine.scene.Scene;
@@ -36,6 +37,8 @@ public class Puzzle1 extends Scene {
 		
 		
 		try {
+			addToScene("airmeter", Game.getAirMeter()).setLayer(99);
+			
 			parts[0] = new PolyTexSprite(-0.344f, 0.458f, "0", TextureManager.getTextureFromResource("/tsa2035/game/content/images/oxygenpuzzle/oxygenschematicA0.png"), false);
 			parts[0].addTexture("90", TextureManager.getTextureFromResource("/tsa2035/game/content/images/oxygenpuzzle/oxygenschematicA90.png"));
 			parts[0].addTexture("180", TextureManager.getTextureFromResource("/tsa2035/game/content/images/oxygenpuzzle/oxygenschematicA180.png"));

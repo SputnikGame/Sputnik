@@ -2,13 +2,16 @@ package tsa2035.game.content.levels.level1;
 
 import java.io.IOException;
 
+import tsa2035.game.content.core.Game;
 import tsa2035.game.content.levels.MainCharacter;
 import tsa2035.game.engine.core.Renderer;
+import tsa2035.game.engine.scene.FinishedCallback;
 import tsa2035.game.engine.scene.InteractionCallback;
 import tsa2035.game.engine.scene.Ladder;
 import tsa2035.game.engine.scene.PolyTexSprite;
 import tsa2035.game.engine.scene.Scene;
 import tsa2035.game.engine.scene.Sprite;
+import tsa2035.game.engine.scene.TimerObject;
 import tsa2035.game.engine.scene.background.SpriteBackground;
 import tsa2035.game.engine.texture.AnimatedTexture;
 import tsa2035.game.engine.texture.AnimationFinishedCallback;
@@ -20,6 +23,18 @@ public class Level5 extends Scene {
 	{
 		try {
 			setBackground(new SpriteBackground(TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/wallpanels.png")));
+			
+			addToScene("airmeter", Game.getAirMeter()).setLayer(99);
+			
+			Game.getAirMeter().setCurrentCallback(new FinishedCallback(){
+				@Override
+				public void timerFinished(TimerObject parent) {
+					Renderer.animatedSceneSwitch(new Level4());
+					Game.getAirMeter().reset();
+					Game.getAirMeter().start();
+				}
+			});
+			
 			addToScene("character", new MainCharacter(-0.45f, -0.6f)).setLayer(10);
 			addToScene("floor", new Sprite(0f, -0.98f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/floor.png"))).setSolid(true);
 			addToScene("pipes", new Sprite(0f, 0.89f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/pipes.png"))).setSolid(true).setLayer(0);
