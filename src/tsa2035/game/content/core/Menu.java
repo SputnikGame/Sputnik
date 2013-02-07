@@ -6,6 +6,7 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.openal.AL;
 import org.lwjgl.opengl.Display;
 
+import tsa2035.game.content.levels.cutscenes.Intro;
 import tsa2035.game.content.levels.level1.Level1;
 import tsa2035.game.content.levels.level1.Level4;
 import tsa2035.game.engine.core.Renderer;
@@ -74,7 +75,7 @@ public class Menu extends Scene {
 			switch (selected)
 			{
 				case 0: // Play
-					Renderer.animatedSceneSwitch(new Level4());
+					Renderer.animatedSceneSwitch(new Intro());
 					Game.getAirMeter().reset();
 					Game.getAirMeter().start();
 					break;
