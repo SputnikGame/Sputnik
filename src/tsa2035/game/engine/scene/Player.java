@@ -133,7 +133,7 @@ public class Player extends Sprite {
 		}
 		
 		isWalking = false;
-		if ( !hitSides[Side.RIGHT.ordinal()] && Keyboard.isKeyDown(Keyboard.KEY_A) )
+		if ( !hitSides[Side.RIGHT.ordinal()] && Keyboard.isKeyDown(Keyboard.KEY_A) && getX() > -1.0f )
 		{
 			setX(getX()-0.005f);
 			isWalking = true;
@@ -150,7 +150,7 @@ public class Player extends Sprite {
 			setY(getY()+0.005f);
 		}
 
-		if ( !hitSides[Side.LEFT.ordinal()] && Keyboard.isKeyDown(Keyboard.KEY_D) )
+		if ( !hitSides[Side.LEFT.ordinal()] && Keyboard.isKeyDown(Keyboard.KEY_D) && getX() < 1.0f )
 		{
 			setX(getX()+0.005f);
 			isWalking = true;
