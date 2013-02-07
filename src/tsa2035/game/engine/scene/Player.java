@@ -22,6 +22,8 @@ public class Player extends Sprite {
 	protected boolean isWalking = false;
 	protected boolean leftWalking = false;
 	
+	SinglePressKeyboard interactKey = new SinglePressKeyboard(Keyboard.KEY_E);
+	
 	public Player(float x, float y, Texture t, boolean handleGravity) {
 		super(x, y, t);
 		this.handleGravity = handleGravity;
@@ -60,14 +62,14 @@ public class Player extends Sprite {
 		boolean hitSides[] = new boolean[4];
 		boolean freefall = false;
 		boolean allowJumping = false;
-
+		boolean interactPressed = interactKey.check();
 		while ( sceneObjects.hasNext() )
 		{
 			Sprite thisObj = sceneObjects.next();
  
 			if ( !this.equals(thisObj) && !thisObj.isHidden() )
 			{
-				if ( Keyboard.isKeyDown(Keyboard.KEY_E) )
+				if ( interactPressed )
 					thisObj.interact(this);
 					
 				if ( thisObj.isSolid() )

@@ -3,9 +3,7 @@ package tsa2035.game.content.levels.level1;
 import java.io.IOException;
 
 import tsa2035.game.content.levels.MainCharacter;
-import tsa2035.game.engine.bounding.Side;
 import tsa2035.game.engine.core.Renderer;
-import tsa2035.game.engine.scene.CollisionCallback;
 import tsa2035.game.engine.scene.InteractionCallback;
 import tsa2035.game.engine.scene.Ladder;
 import tsa2035.game.engine.scene.PolyTexSprite;
@@ -14,7 +12,6 @@ import tsa2035.game.engine.scene.Sprite;
 import tsa2035.game.engine.scene.background.SpriteBackground;
 import tsa2035.game.engine.texture.AnimatedTexture;
 import tsa2035.game.engine.texture.AnimationFinishedCallback;
-import tsa2035.game.engine.texture.LoopedAnimatedTexture;
 import tsa2035.game.engine.texture.TextureManager;
 
 public class Level5 extends Scene {

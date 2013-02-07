@@ -1,4 +1,4 @@
-package tsa2035.game.content.levels.puzzles;
+package tsa2035.game.engine.scene;
 
 import org.lwjgl.input.Keyboard;
 

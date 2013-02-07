@@ -5,38 +5,36 @@ import java.io.IOException;
 
 import org.lwjgl.input.Keyboard;
 
+import tsa2035.game.engine.core.Renderer;
 import tsa2035.game.engine.scene.PolyTexSprite;
 import tsa2035.game.engine.scene.Scene;
+import tsa2035.game.engine.scene.SinglePressKeyboard;
 import tsa2035.game.engine.scene.Sprite;
-import tsa2035.game.engine.scene.background.Background;
 import tsa2035.game.engine.scene.background.SolidBackground;
-import tsa2035.game.engine.texture.StaticTexture;
 import tsa2035.game.engine.texture.TextureManager;
 
 public class Puzzle1 extends Scene {
 	PolyTexSprite parts[] = new PolyTexSprite[4];
 	int angles[] = new int[4];
-	SolidBackground RedBG = new SolidBackground(Color.RED);
+	SolidBackground RedBG = new SolidBackground(Color.WHITE);
 	SolidBackground GreenBG = new SolidBackground(Color.GREEN);
 	
 	SinglePressKeyboard keyZ = new SinglePressKeyboard(Keyboard.KEY_Z);
 	SinglePressKeyboard keyX = new SinglePressKeyboard(Keyboard.KEY_X);
 	SinglePressKeyboard keyC = new SinglePressKeyboard(Keyboard.KEY_C);
 	SinglePressKeyboard keyV = new SinglePressKeyboard(Keyboard.KEY_V);
-	
-	public Puzzle1()
+	Scene parent = null;
+	boolean startedFadeout = false;
+	public Puzzle1(Scene parent)
 	{
+		this.parent = parent;
 		setBackground(RedBG);
 		angles[0] = 90;
 		angles[1] = 270;
 		angles[2] = 180;
 		angles[3] = 90;
 		
-		for ( int i = 0; i < 4; i++ )
-		{
-			angles[i] = getRandomAngle();
-		}
-		System.out.println(getRandomAngle());
+		
 		try {
 			parts[0] = new PolyTexSprite(-0.344f, 0.458f, "0", TextureManager.getTextureFromResource("/tsa2035/game/content/images/oxygenpuzzle/oxygenschematicA0.png"), false);
 			parts[0].addTexture("90", TextureManager.getTextureFromResource("/tsa2035/game/content/images/oxygenpuzzle/oxygenschematicA90.png"));
@@ -59,12 +57,13 @@ public class Puzzle1 extends Scene {
 			parts[3].addTexture("180", TextureManager.getTextureFromResource("/tsa2035/game/content/images/oxygenpuzzle/oxygenschematicD180.png"));
 			parts[3].addTexture("270", TextureManager.getTextureFromResource("/tsa2035/game/content/images/oxygenpuzzle/oxygenschematicD270.png"));
 			
-			addToScene("overlay", new Sprite(0,0,TextureManager.getTextureFromResource("/tsa2035/game/content/images/oxygenpuzzle/overlay.png")));
+			addToScene("overlay", new Sprite(0,0,TextureManager.getTextureFromResource("/tsa2035/game/content/images/oxygenpuzzle/overlay.png"))).setLayer(5);
 
 			for ( int i = 0; i<parts.length; i++ )
 			{
+				parts[i].setTexture(String.valueOf(angles[i]));
 				addToScene("p"+i, parts[i]);
-			}
+			}	
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -117,6 +116,12 @@ public class Puzzle1 extends Scene {
 		
 		for ( int i = 0; i < 4; i++ )
 			parts[i].setTexture(String.valueOf(angles[i]));
+		
+		if ( isSolved() && !startedFadeout )
+		{
+			startedFadeout = true;
+			Renderer.animatedSceneSwitch(parent);
+		}
 	}
 	
 	public boolean isSolved()

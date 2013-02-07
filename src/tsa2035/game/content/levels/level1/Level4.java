@@ -4,9 +4,7 @@ import java.io.IOException;
 
 import tsa2035.game.content.levels.MainCharacter;
 import tsa2035.game.content.levels.meta.Status1;
-import tsa2035.game.engine.bounding.Side;
 import tsa2035.game.engine.core.Renderer;
-import tsa2035.game.engine.scene.CollisionCallback;
 import tsa2035.game.engine.scene.InteractionCallback;
 import tsa2035.game.engine.scene.Ladder;
 import tsa2035.game.engine.scene.PolyTexSprite;

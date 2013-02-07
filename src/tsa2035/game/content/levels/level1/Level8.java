@@ -76,7 +76,7 @@ public class Level8 extends Scene {
 				@Override
 				public void interactionOccured(Sprite registeredObject,
 						Sprite withObject) {
-					Renderer.animatedSceneSwitch(new Level6());
+					Renderer.animatedSceneSwitch(null);
 					
 				}
 				
