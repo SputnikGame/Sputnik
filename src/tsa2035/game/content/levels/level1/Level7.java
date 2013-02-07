@@ -49,17 +49,17 @@ public class Level7 extends Scene {
 			addToScene("stack2crate1", new Sprite(-0.4f, -0.67f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);
 			addToScene("stack2crate2", new Sprite(-0.41f, -0.88f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);
 			addToScene("stack3crate1", new Sprite(0.37f, -0.57f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);
-			addToScene("stack3crate2", new Sprite(0.4f, -0.78f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f);
-			addToScene("stack3crate3", new Sprite(0.39f, -0.94f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/halfcrate.png"))).setScale(0.5f);
+			addToScene("stack3crate2", new Sprite(0.4f, -0.78f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);
+			addToScene("stack3crate3", new Sprite(0.39f, -0.94f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/halfcrate.png"))).setScale(0.5f).setSolid(true);
 			addToScene("stack4crate1", new Sprite(0.68f, -0.058f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);
-			addToScene("stack4crate2", new Sprite(0.69f, -0.25f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f);
-			addToScene("stack4crate3", new Sprite(0.68f, -0.46f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f);
-			addToScene("stack4crate4", new Sprite(0.665f, -0.67f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f);
-			addToScene("stack4crate5", new Sprite(0.68f, -0.88f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f);
-			addToScene("stack5crate1", new Sprite(0.86f, -0.25f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f);
-			addToScene("stack5crate2", new Sprite(0.89f, -0.46f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f);
-			addToScene("stack5crate3", new Sprite(0.87f, -0.67f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f);
-			addToScene("stack5crate4", new Sprite(0.89f, -0.88f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f);
+			addToScene("stack4crate2", new Sprite(0.69f, -0.25f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);
+			addToScene("stack4crate3", new Sprite(0.68f, -0.46f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);
+			addToScene("stack4crate4", new Sprite(0.665f, -0.67f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);
+			addToScene("stack4crate5", new Sprite(0.68f, -0.88f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);
+			addToScene("stack5crate1", new Sprite(0.86f, -0.25f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);
+			addToScene("stack5crate2", new Sprite(0.89f, -0.46f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);
+			addToScene("stack5crate3", new Sprite(0.87f, -0.67f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);
+			addToScene("stack5crate4", new Sprite(0.89f, -0.88f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true);
 			
 			final PolyTexSprite switchbox = new PolyTexSprite(-0.8f,-0.0f, "off", TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/switch_off.png"), false);
 			addToScene("switch", switchbox).setScale(0.5f).setInteractable(true);
