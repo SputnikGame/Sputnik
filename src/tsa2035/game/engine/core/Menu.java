@@ -11,7 +11,6 @@ import tsa2035.game.content.levels.level1.Level4;
 import tsa2035.game.engine.scene.PolyTexSprite;
 import tsa2035.game.engine.scene.Scene;
 import tsa2035.game.engine.scene.SinglePressKeyboard;
-import tsa2035.game.engine.scene.Sprite;
 import tsa2035.game.engine.scene.background.SpriteBackground;
 import tsa2035.game.engine.texture.TextureManager;
 

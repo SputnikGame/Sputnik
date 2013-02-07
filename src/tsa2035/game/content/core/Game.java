@@ -6,8 +6,6 @@ import org.lwjgl.LWJGLException;
 import org.newdawn.slick.openal.Audio;
 import org.newdawn.slick.openal.AudioLoader;
 
-import tsa2035.game.content.levels.level1.Level1;
-import tsa2035.game.content.levels.level1.Level7;
 import tsa2035.game.engine.audio.AudioManager;
 import tsa2035.game.engine.core.Menu;
 import tsa2035.game.engine.core.Renderer;
@@ -28,8 +26,8 @@ public class Game {
 	}
 	
 	public static void main(String[] args) throws LWJGLException, IOException {
-	//	soundtrack = AudioLoader.getAudio("WAV", AudioManager.class.getResourceAsStream("/tsa2035/game/content/audio/game.WAV"));
-	//	soundtrack.playAsMusic(1.0f, 0.5f, true);
+		soundtrack = AudioLoader.getAudio("WAV", AudioManager.class.getResourceAsStream("/tsa2035/game/content/audio/game.WAV"));
+		soundtrack.playAsMusic(1.0f, 0.5f, true);
 		Renderer.init(800, 600);
 		Renderer.renderLoop(new Menu());
 	}

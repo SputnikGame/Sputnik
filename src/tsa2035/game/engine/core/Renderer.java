@@ -13,7 +13,6 @@ import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
 
-import tsa2035.game.content.core.Game;
 import tsa2035.game.engine.scene.Scene;
 
 public class Renderer {
