@@ -3,7 +3,9 @@ package tsa2035.game.content.levels.level1;
 import java.io.IOException;
 
 import tsa2035.game.content.levels.MainCharacter;
+import tsa2035.game.content.levels.meta.Status1;
 import tsa2035.game.content.levels.meta.Status2;
+import tsa2035.game.content.levels.puzzles.Puzzle1;
 import tsa2035.game.engine.bounding.Side;
 import tsa2035.game.engine.core.Renderer;
 import tsa2035.game.engine.scene.CollisionCallback;
@@ -17,6 +19,8 @@ import tsa2035.game.engine.texture.LoopedAnimatedTexture;
 import tsa2035.game.engine.texture.TextureManager;
 
 public class Level7 extends Scene {
+	
+	Puzzle1 puzzle = new Puzzle1();
 	
 	public Level7()
 	{
@@ -60,7 +64,10 @@ public class Level7 extends Scene {
 				@Override
 				public void interactionOccured(Sprite interacter,
 						Sprite interactee) {
-					Renderer.animatedSceneSwitch(new Status2(Level7.this));
+					if ( puzzle.isSolved() )
+						Renderer.animatedSceneSwitch(new Status2(Level7.this));
+					else
+						Renderer.animatedSceneSwitch(new Status1(Level7.this));
 					
 				}});
 			

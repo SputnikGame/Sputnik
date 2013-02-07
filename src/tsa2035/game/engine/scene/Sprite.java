@@ -26,6 +26,8 @@ public class Sprite {
 	
 	protected int layer = 1;
 	
+	protected float rotationAngle = 90;
+	
 	protected String name = "";
 	
 	protected BoundingBox boundingBox = new BoundingBox();
@@ -98,6 +100,20 @@ public class Sprite {
 		return ((float)texture.getWidth()/(float)Renderer.getScreenX())*scale;
 	}
 	
+	public float rotateX(float x, float y, float theta)
+	{
+	  float cosA = (float) Math.cos(theta*(Math.PI/180.0));
+	  float sinA = (float) Math.sin(theta*(Math.PI/180.0));
+	  return x*cosA-y*sinA;
+	}
+
+	public float rotateY(float x, float y, float theta)
+	{
+	  float cosA = (float)Math.cos(theta*(Math.PI/180.0));
+	  float sinA = (float)Math.sin(theta*(Math.PI/180.0));
+	  return x*sinA+y*cosA;
+	}
+	
 	public void render(Scene parent)
 	{
 		if ( isHidden() ) return;
@@ -107,6 +123,7 @@ public class Sprite {
 
 		float x = getWidth();
 		float y = getHeight();
+	
 		
 		float points[][] = {
 				{ x, y },
@@ -114,12 +131,13 @@ public class Sprite {
 				{ -x,-y },
 				{ x, -y }	
 		};
-		
+
 		for ( int i = 0; points.length > i; i++ )
 		{
 			points[i][0] += xPos;
 			points[i][1] += yPos;
 		}
+		
 		
 		boundingBox.setPoints(points);
 		

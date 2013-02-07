@@ -16,7 +16,7 @@ public class Status2 extends Scene {
 	{
 		this.returnTo = returnTo;
 		try {
-			addToScene("status", new Sprite(0,0,new AnimatedTexture("/tsa2035/game/content/images/statusInterface/airOnline", "status", 4,1)));
+			addToScene("status", new Sprite(0,0,new AnimatedTexture("/tsa2035/game/content/images/statusInterface/airOnline", "status", 3,1)));
 			((AnimatedTexture)getObject("status").getTexture()).fire();
 		} catch (FileNotFoundException e) {
 			System.out.println("Texture loading failed");

@@ -21,7 +21,9 @@ public class Level6 extends Scene {
 			addToScene("floor", new Sprite(0f, -0.98f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/floor.png"))).setSolid(true);
 			addToScene("pipes", new Sprite(0f, 0.89f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/pipes.png"))).setLayer(2);
 			addToScene("vents", new Sprite(0f, 0.7f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/vents.png"))).setLayer(2);
-			addToScene("door", new Sprite(-0.78f, -0.58f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/door.png"))).setInteractable(true);
+			addToScene("door", new PolyTexSprite(-0.78f, -0.58f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/doororiginal.png"))).setInteractable(false);
+			((PolyTexSprite)getObject("door")).addTexture("active", TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/door.png"));
+			
 			
 			addToScene("gosign", new Sprite(0f, 0.35f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/goleft.png"))).setScale(0.8f);
 			addToScene("wallpipes", new Sprite(0f, 0f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/wallpipes.png"))).setLayer(1);
@@ -40,6 +42,8 @@ public class Level6 extends Scene {
 					if ( mainpwr.getTextureName().equals("open") && auxpwr.getTextureName().equals("open") && odist.getTextureName().equals("open") )
 					{
 						odist.setTexture("openrdy");
+						getObject("door").setInteractable(true);
+						((PolyTexSprite)getObject("door")).setTexture("active");
 					}
 				}
 			});
@@ -56,6 +60,8 @@ public class Level6 extends Scene {
 					if ( mainpwr.getTextureName().equals("open") && auxpwr.getTextureName().equals("open") && odist.getTextureName().equals("open") )
 					{
 						odist.setTexture("openrdy");
+						getObject("door").setInteractable(true);
+						((PolyTexSprite)getObject("door")).setTexture("active");
 					}
 				}
 			});
@@ -72,6 +78,8 @@ public class Level6 extends Scene {
 				if ( mainpwr.getTextureName().equals("open") && auxpwr.getTextureName().equals("open") && odist.getTextureName().equals("open") )
 				{
 					odist.setTexture("openrdy");
+					getObject("door").setInteractable(true);
+					((PolyTexSprite)getObject("door")).setTexture("active");
 				}
 			}});
 			
