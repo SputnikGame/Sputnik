@@ -35,6 +35,8 @@ public class Menu extends Scene {
 			menuOptions[2] = new PolyTexSprite(0,-0.5f,"grey", TextureManager.getTextureFromResource("/tsa2035/game/content/images/menu/grey_exit.png"), false);
 			menuOptions[2].addTexture("blue", TextureManager.getTextureFromResource("/tsa2035/game/content/images/menu/blue_exit.png"));
 			
+			addToScene ("menunav", new Sprite(0.7f, -0.7f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/menu/menunav.png")));
+		
 			for ( int i = 0; i < menuOptions.length; i++ )
 				addToScene("opt"+i, menuOptions[i]);
 			

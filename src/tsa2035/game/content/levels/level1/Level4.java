@@ -42,7 +42,7 @@ public class Level4 extends Scene {
 			addToScene("crate4", new Sprite(-0.18f, -0.645f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true).setLayer(5);
 			addToScene("crate5", new Sprite(-0.1f, -0.43f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/crate.png"))).setScale(0.5f).setSolid(true).setLayer(5);
 			addToScene("gosign", new Sprite(-0.1f, 0.3f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/go.png"))).setScale(0.8f);
-			addToScene("divider", new Sprite(0.45f, 0.1f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/divider.png"))).setScale(0.8f);
+			addToScene("divider", new Sprite(0.45f, 0.1f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/divider.png"))).setScale(0.8f).setSolid(true);
 			
 			addToScene("gate", new Sprite(0.45f, -0.68f, new AnimatedTexture("/tsa2035/game/content/images/gate", "gate", 35, 12))).setSolid(true);
 			((AnimatedTexture)getObject("gate").getTexture()).registerFinishedCallback(new AnimationFinishedCallback(){
