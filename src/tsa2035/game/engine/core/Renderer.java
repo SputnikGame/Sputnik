@@ -132,8 +132,8 @@ public class Renderer {
 	
 	public static void jumpSceneSwitch(Scene newScene)
 	{
-		nextScene = newScene;
-		switchState = 0;
+		setScene(newScene);
+		switchState = -1;
 		currentAlpha = 0;
 	}
 }

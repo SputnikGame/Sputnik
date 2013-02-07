@@ -3,6 +3,7 @@ package tsa2035.game.content.levels.level1;
 import java.io.IOException;
 
 import tsa2035.game.content.levels.MainCharacter;
+import tsa2035.game.engine.core.Menu;
 import tsa2035.game.engine.core.Renderer;
 import tsa2035.game.engine.scene.InteractionCallback;
 import tsa2035.game.engine.scene.PolyTexSprite;
@@ -34,7 +35,7 @@ public class Level3 extends Scene {
 				@Override
 				public void interactionOccured(Sprite registeredObject,
 						Sprite withObject) {
-					Renderer.animatedSceneSwitch(new Level4());
+					Renderer.animatedSceneSwitch(new Menu());
 					
 				}
 				

@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import tsa2035.game.content.levels.MainCharacter;
 import tsa2035.game.engine.bounding.Side;
+import tsa2035.game.engine.core.Menu;
 import tsa2035.game.engine.core.Renderer;
 import tsa2035.game.engine.scene.CollisionCallback;
 import tsa2035.game.engine.scene.InteractionCallback;
@@ -76,7 +77,7 @@ public class Level8 extends Scene {
 				@Override
 				public void interactionOccured(Sprite registeredObject,
 						Sprite withObject) {
-					Renderer.animatedSceneSwitch(null);
+					Renderer.animatedSceneSwitch(new Menu());
 					
 				}
 				
