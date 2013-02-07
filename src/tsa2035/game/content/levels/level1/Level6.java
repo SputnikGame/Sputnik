@@ -33,7 +33,8 @@ public class Level6 extends Scene {
 			});
 			
 			
-			addToScene("character", new MainCharacter(-0.45f, -0.6f)).setLayer(10);
+			addToScene("character", new MainCharacter(0.65f, -0.6f)).setLayer(10);
+			
 			addToScene("floor", new Sprite(0f, -0.98f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/floor.png"))).setSolid(true);
 			addToScene("pipes", new Sprite(0f, 0.89f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/pipes.png"))).setLayer(2);
 			addToScene("vents", new Sprite(0f, 0.7f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/vents.png"))).setLayer(2);
