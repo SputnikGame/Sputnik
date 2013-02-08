@@ -16,7 +16,7 @@ public class Intro extends Scene implements AnimationFinishedCallback {
 	{
 		Game.stopSoundtrack();
 		try {
-			AnimatedTexture video = new AnimatedTexture("/tsa2035/game/content/images/introanimation", "animation", 205, 10);
+			AnimatedTexture video = new AnimatedTexture("/tsa2035/game/content/images/introanimation", "animation", 205, 15);
 			video.registerFinishedCallback(this);
 			video.fire();
 			addToScene("video", new Sprite(0,0,video));
@@ -44,6 +44,8 @@ public class Intro extends Scene implements AnimationFinishedCallback {
 			e.printStackTrace();
 		}
 		
+		Game.getAirMeter().reset();
+		Game.getAirMeter().start();
 		Renderer.animatedSceneSwitch(new Level4());
 	}
 }

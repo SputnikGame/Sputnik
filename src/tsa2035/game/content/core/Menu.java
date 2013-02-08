@@ -75,8 +75,6 @@ public class Menu extends Scene {
 			{
 				case 0: // Play
 					Renderer.animatedSceneSwitch(new Intro());
-					Game.getAirMeter().reset();
-					Game.getAirMeter().start();
 					break;
 				case 1: // Tut
 					Renderer.animatedSceneSwitch(new Level1());
