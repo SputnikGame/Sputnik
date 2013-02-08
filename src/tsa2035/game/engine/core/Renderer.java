@@ -13,6 +13,7 @@ import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
 
+import tsa2035.game.content.core.Game;
 import tsa2035.game.engine.scene.Scene;
 
 public class Renderer {
@@ -41,6 +42,7 @@ public class Renderer {
 	
 	private static void renderSceneFade(float alpha)
 	{
+		Game.setMusicVolume(alpha);
 		glColor4f(0,0,0,alpha);
 		glBegin(GL_QUADS);
 		

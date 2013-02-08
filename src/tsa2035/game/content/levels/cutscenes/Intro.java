@@ -3,6 +3,8 @@ package tsa2035.game.content.levels.cutscenes;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import org.lwjgl.openal.AL10;
+
 import tsa2035.game.content.core.Game;
 import tsa2035.game.content.levels.Level4;
 import tsa2035.game.engine.core.Renderer;
@@ -14,7 +16,7 @@ import tsa2035.game.engine.texture.AnimationFinishedCallback;
 public class Intro extends Scene implements AnimationFinishedCallback {
 	public Intro()
 	{
-		Game.stopSoundtrack();
+		AL10.alSourceStop(Game.soundtrackSource.get(0));
 		try {
 			AnimatedTexture video = new AnimatedTexture("/tsa2035/game/content/images/introanimation", "animation", 205, 15);
 			video.registerFinishedCallback(this);
@@ -37,12 +39,7 @@ public class Intro extends Scene implements AnimationFinishedCallback {
 	
 	@Override
 	public void animationFinished(AnimatedTexture animation) {
-		try {
-			Game.startSoundtrack();
-		} catch (IOException e) {
-			System.out.println("Failed to start soundtrack!");
-			e.printStackTrace();
-		}
+		AL10.alSourcePlay(Game.soundtrackSource.get(0));
 		
 		Game.getAirMeter().reset();
 		Game.getAirMeter().start();
