@@ -31,9 +31,15 @@ public class Game {
 	
 	public static void startSoundtrack() throws IOException
 	{
-		stopSoundtrack();
-		soundtrack = AudioLoader.getAudio("WAV", AudioManager.class.getResourceAsStream("/tsa2035/game/content/audio/game.WAV"));
-		soundtrack.playAsMusic(1.0f, 0.5f, true);
+		try
+		{
+			stopSoundtrack();
+			soundtrack = AudioLoader.getAudio("WAV", AudioManager.class.getResourceAsStream("/tsa2035/game/content/audio/game.WAV"));
+			soundtrack.playAsMusic(1.0f, 0.5f, true);
+		} catch ( Exception e) 
+		{
+			System.out.println("Audio failed to init... update your sound drivers?");
+		}
 	}
 	
 	public static Audio getSoundtrack()
@@ -49,9 +55,9 @@ public class Game {
 
 	
 	public static void main(String[] args) throws LWJGLException, IOException {
-		
-		startSoundtrack();
+		startSoundtrack();		
 		Renderer.init(800, 600);
+		Renderer.setWindowTitle("Sputnik");
 		airMeter = new AirMeter(0.85f, 0.83f, new AnimatedTexture("/tsa2035/game/content/images/airmeter", "airmeter", 54, 1), 120000);
 		airMeter.setScale(0.7f);
 		Renderer.renderLoop(new Menu());
