@@ -1,8 +1,7 @@
-package tsa2035.game.content.levels.level1;
+package tsa2035.game.content.levels;
 
 import java.io.IOException;
 
-import tsa2035.game.content.levels.MainCharacter;
 import tsa2035.game.engine.core.Renderer;
 import tsa2035.game.engine.scene.InteractionCallback;
 import tsa2035.game.engine.scene.Scene;

@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import tsa2035.game.content.core.Game;
-import tsa2035.game.content.levels.level1.Level4;
+import tsa2035.game.content.levels.Level4;
 import tsa2035.game.engine.core.Renderer;
 import tsa2035.game.engine.scene.Scene;
 import tsa2035.game.engine.scene.Sprite;

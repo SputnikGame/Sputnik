@@ -6,8 +6,8 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.openal.AL;
 import org.lwjgl.opengl.Display;
 
+import tsa2035.game.content.levels.Level1;
 import tsa2035.game.content.levels.cutscenes.Intro;
-import tsa2035.game.content.levels.level1.Level1;
 import tsa2035.game.engine.core.Renderer;
 import tsa2035.game.engine.scene.PolyTexSprite;
 import tsa2035.game.engine.scene.Scene;
