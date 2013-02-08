@@ -60,6 +60,10 @@ public class Game {
 		Renderer.setWindowTitle("Sputnik");
 		airMeter = new AirMeter(0.85f, 0.83f, new AnimatedTexture("/tsa2035/game/content/images/airmeter", "airmeter", 54, 1), 120000);
 		airMeter.setScale(0.7f);
+		
+		// Preload animation
+		new AnimatedTexture("/tsa2035/game/content/images/introanimation", "animation", 205, 15);
+		
 		Renderer.renderLoop(new Menu());
 	}
 
