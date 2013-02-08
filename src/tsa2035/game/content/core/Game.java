@@ -52,7 +52,6 @@ public class Game {
 		return airMeter;
 	}
 	
-
 	
 	public static void main(String[] args) throws LWJGLException, IOException {
 		startSoundtrack();		

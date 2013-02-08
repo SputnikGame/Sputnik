@@ -1,5 +1,6 @@
 package tsa2035.game.engine.scene;
 
+import tsa2035.game.engine.bounding.BoundingBox;
 import tsa2035.game.engine.texture.Texture;
 
 public class Ladder extends Sprite {
@@ -21,7 +22,7 @@ public class Ladder extends Sprite {
 	public void render(Scene parent)
 	{
 		super.render(parent);
-
+	
 		Player player = (Player)parent.getObject(playerName);
 		Sprite platform = null;
 		
@@ -37,11 +38,15 @@ public class Ladder extends Sprite {
 		}
 		else if ( contacting )
 		{
+			BoundingBox playerBox = player.getBoundingBox();
+			if ( playerBox.getLowestY() > getBoundingBox().getLowestY()+0.08f &&  playerBox.getLowestY() < getBoundingBox().getHighestY()-0.08f )
+				player.setX(getX());
 			player.setGravity(false);
 			if ( platformName != null )
 				platform.setSolid(false);
 		}
 		wasUsing = contacting;
 	}
+	
 
 }
