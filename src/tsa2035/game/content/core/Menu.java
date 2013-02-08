@@ -39,7 +39,7 @@ public class Menu extends Scene {
 			menuOptions[2].addTexture("blue", TextureManager.getTextureFromResource("/tsa2035/game/content/images/menu/blue_exit.png"));
 			
 			addToScene("menunav", new Sprite(0.7f, -0.7f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/menu/menunav.png")));
-		
+			addToScene("title", new Sprite(0f, 0.8f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/menu/title.png")));
 			for ( int i = 0; i < menuOptions.length; i++ )
 				addToScene("opt"+i, menuOptions[i]);
 			
