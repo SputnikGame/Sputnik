@@ -34,6 +34,11 @@ public class Renderer {
 		GL11.glOrtho(0, screenX, screenY, 0, 0, 0);
 	}
 	
+	public static void setWindowTitle(String name)
+	{
+		Display.setTitle(name);
+	}
+	
 	private static void renderSceneFade(float alpha)
 	{
 		glColor4f(0,0,0,alpha);
