@@ -37,7 +37,7 @@ public class AnimatedPlayer extends Player {
 	public void render(Scene scene)
 	{
 		super.render(scene);
-		if ( isWalking )
+		if ( isWalking && !onLadder )
 		{
 			leftAnimation.start();
 			rightAnimation.start();

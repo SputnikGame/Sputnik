@@ -43,7 +43,7 @@ public class Level5 extends Scene {
 			addToScene("gosign", new Sprite(-0.1f, -0.5f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/go.png"))).setScale(0.8f);
 			addToScene("platform1", new Sprite(-0.64f, 0f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/platform250.png"))).setSolid(true);
 			addToScene("ladder1", new Ladder(-0.85f, -0.46f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/ladder_long.png"), "character", "platform1")).setInteractable(true);
-			addToScene("ladder3", new Ladder(-0.4f, -0.02f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/ladder_short.png"), "character", "platform1")).setInteractable(true);
+			addToScene("ladder3", new Ladder(-0.4f, -0.1f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/ladder_extrashort.png"), "character", "platform1")).setInteractable(true);
 			addToScene("platform2", new Sprite(0.01f, -0.23f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/platform400.png"))).setSolid(true).setLayer(-10);
 			addToScene("ladder2", new Ladder(0.42f, -0.02f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/ladder_short.png"), "character", "platform3")).setInteractable(true);
 			addToScene("platform3", new Sprite(0.725f, 0.15f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/platform300.png"))).setSolid(true).setLayer(-10);
@@ -93,8 +93,6 @@ public class Level5 extends Scene {
 	
 	@Override
 	public void sceneLogic() {
-		// This function is called every render loop
-		// Note: callbacks are the prefered way to do collision/interaction checking, not polling
 	}
 
 }

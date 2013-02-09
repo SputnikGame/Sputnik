@@ -40,7 +40,9 @@ public class Ladder extends Sprite {
 		{
 			BoundingBox playerBox = player.getBoundingBox();
 			if ( playerBox.getLowestY() > getBoundingBox().getLowestY()+0.08f &&  playerBox.getLowestY() < getBoundingBox().getHighestY()-0.08f )
+			{
 				player.setX(getX());
+			}
 			player.setGravity(false);
 			if ( platformName != null )
 				platform.setSolid(false);

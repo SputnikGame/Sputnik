@@ -1,9 +1,10 @@
+
 package tsa2035.game.content.levels;
 
 import java.io.IOException;
 
 import tsa2035.game.content.core.Game;
-import tsa2035.game.content.core.Menu;
+import tsa2035.game.content.levels.cutscenes.End;
 import tsa2035.game.content.levels.meta.Status1;
 import tsa2035.game.content.levels.meta.Status2;
 import tsa2035.game.content.levels.puzzles.Puzzle1;
@@ -74,7 +75,7 @@ public class Level8 extends Scene {
 				@Override
 				public void interactionOccured(Sprite registeredObject,
 						Sprite withObject) {
-					Renderer.animatedSceneSwitch(new Menu());
+					Renderer.animatedSceneSwitch(new End());
 					
 				}
 				

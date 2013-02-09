@@ -20,6 +20,7 @@ public class Player extends Sprite {
 	float lastJumpOffset = 0;
 	
 	protected boolean isWalking = false;
+	protected boolean onLadder = false;
 	protected boolean leftWalking = false;
 	
 	SinglePressKeyboard interactKey = new SinglePressKeyboard(Keyboard.KEY_E);
@@ -159,5 +160,4 @@ public class Player extends Sprite {
 		
 		super.render(scene);
 	}
-	
 }
