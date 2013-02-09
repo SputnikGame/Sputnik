@@ -88,7 +88,7 @@ public class Game {
 	
 	public static void main(String[] args) throws LWJGLException, IOException {
 			
-		Renderer.init(800, 600);
+		Renderer.init(800, 600, "/tsa2035/game/content/images/common/icon");
 		Renderer.setWindowTitle("Sputnik");
 		airMeter = new AirMeter(0.85f, 0.83f, new AnimatedTexture("/tsa2035/game/content/images/airmeter", "airmeter", 54, 1), 120000);
 		airMeter.setScale(0.7f);

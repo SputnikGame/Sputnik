@@ -6,12 +6,18 @@ import static org.lwjgl.opengl.GL11.glColor4f;
 import static org.lwjgl.opengl.GL11.glEnd;
 import static org.lwjgl.opengl.GL11.glVertex2f;
 
+import java.io.IOException;
+
 import org.lwjgl.LWJGLException;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.openal.AL;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
+
+import java.nio.ByteBuffer;
+
+import de.matthiasmann.twl.utils.PNGDecoder;
 
 import tsa2035.game.content.core.Game;
 import tsa2035.game.engine.scene.Scene;
@@ -33,6 +39,34 @@ public class Renderer {
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glOrtho(0, screenX, screenY, 0, 0, 0);
+	}
+	
+	public static void init(int screenX, int screenY, String iconBase) throws IOException, LWJGLException
+	{
+		
+		PNGDecoder decoder = null;
+		ByteBuffer logoData[] = new ByteBuffer[3];
+		
+		decoder = new PNGDecoder(Renderer.class.getResourceAsStream(iconBase+"16.png"));
+		logoData[0] = ByteBuffer.allocateDirect(decoder.getWidth()*decoder.getHeight()*4);
+		decoder.decode(logoData[0], decoder.getWidth()*4, PNGDecoder.Format.RGBA);
+		logoData[0].flip();
+		
+		decoder = new PNGDecoder(Renderer.class.getResourceAsStream(iconBase+"32.png"));
+		logoData[1] = ByteBuffer.allocateDirect(decoder.getWidth()*decoder.getHeight()*4);
+		decoder.decode(logoData[1], decoder.getWidth()*4, PNGDecoder.Format.RGBA);
+		logoData[1].flip();
+		
+		decoder = new PNGDecoder(Renderer.class.getResourceAsStream(iconBase+"128.png"));
+		logoData[2] = ByteBuffer.allocateDirect(decoder.getWidth()*decoder.getHeight()*4);
+		decoder.decode(logoData[2], decoder.getWidth()*4, PNGDecoder.Format.RGBA);
+		logoData[2].flip();
+		
+		Display.setIcon(logoData);
+		
+		Renderer.init(screenX, screenY);
+
+		
 	}
 	
 	public static void setWindowTitle(String name)
