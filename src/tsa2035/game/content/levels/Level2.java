@@ -11,7 +11,7 @@ import tsa2035.game.engine.texture.TextureManager;
 
 public class Level2 extends Scene {
 	
-	public Level2()
+	public void loadScene()
 	{
 		try {
 			setBackground(new SpriteBackground(TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/wallpanels.png")));

@@ -112,6 +112,7 @@ public class Renderer {
 	        			else
 	        			{
 	        				Scene lastScene = getScene();
+	        				nextScene.loadScene();
 		        			setScene(nextScene);
 		        			lastScene.cleanUp();
 		        			switchState++;
