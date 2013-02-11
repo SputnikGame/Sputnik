@@ -1,6 +1,7 @@
 package tsa2035.game.engine.texture;
 
 import java.util.HashMap;
+import java.util.Iterator;
 
 public class MultiTexture implements Texture {
 	HashMap<String, Texture> textures = new HashMap<String, Texture>();
@@ -58,5 +59,15 @@ public class MultiTexture implements Texture {
 	@Override
 	public void stop() {
 		textures.get(active).stop();
+	}
+
+	@Override
+	public void unload() {
+		Iterator<Texture> it = textures.values().iterator();
+		while ( it.hasNext() )
+		{
+			TextureManager.unloadTexture(it.next());
+		}
+		
 	}
 }

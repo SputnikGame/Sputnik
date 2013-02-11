@@ -39,6 +39,7 @@ public class Ladder extends Sprite {
 		else if ( contacting )
 		{
 			BoundingBox playerBox = player.getBoundingBox();
+			
 			if ( playerBox.getLowestY() > getBoundingBox().getLowestY()+0.08f &&  playerBox.getLowestY() < getBoundingBox().getHighestY()-0.08f )
 			{
 				player.setX(getX());

@@ -109,4 +109,13 @@ public class AnimatedTexture implements Texture {
 	{
 		return numberOfFrames;
 	}
+
+	@Override
+	public void unload() {
+		Iterator<StaticTexture> it = textures.iterator();
+		while ( it.hasNext() )
+		{
+			TextureManager.unloadTexture(it.next());
+		}
+	}
 }

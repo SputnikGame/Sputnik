@@ -87,4 +87,14 @@ public class StaticTexture implements Texture {
 	public void stop() {
 		System.out.println("A method for animated textures was called on static texture "+textureID);
 	}
+
+	public void doUnload()
+	{
+		GL11.glDeleteTextures(textureID);
+	}
+	
+	@Override
+	public void unload() {
+		TextureManager.unloadTexture(this);
+	}
 }

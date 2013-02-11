@@ -10,4 +10,6 @@ public interface Texture {
 	public void start();
 	public void stop();
 	
+	public void unload();
+	
 }

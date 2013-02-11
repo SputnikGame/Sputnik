@@ -111,7 +111,9 @@ public class Renderer {
 	        				switchState = -1;
 	        			else
 	        			{
+	        				Scene lastScene = getScene();
 		        			setScene(nextScene);
+		        			lastScene.cleanUp();
 		        			switchState++;
 	        			}
 	        			break;

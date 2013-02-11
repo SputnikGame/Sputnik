@@ -45,4 +45,9 @@ public class Intro extends Scene implements AnimationFinishedCallback {
 		Game.getAirMeter().start();
 		Renderer.animatedSceneSwitch(new Level4());
 	}
+	
+	public void cleanUp()
+	{
+		getObject("video").getTexture().unload();
+	}
 }

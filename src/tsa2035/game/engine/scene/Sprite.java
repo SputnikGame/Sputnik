@@ -320,8 +320,8 @@ public class Sprite {
 		this.name = name;
 	}
 	
-	public void cleanUp()
+	public void unloadTextures()
 	{
-		
+		texture.unload();
 	}
 }

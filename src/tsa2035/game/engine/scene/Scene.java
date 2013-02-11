@@ -81,13 +81,17 @@ public abstract class Scene {
 		return audioManager;
 	}
 	
-	public void cleanUp()
+	public void unloadTextures()
 	{
 		Iterator<Sprite> it = iterator();
 		while ( it.hasNext() )
 		{
-			it.next().cleanUp();
-		}
-				
+			it.next().unloadTextures();
+		}			
+	}
+	
+	public void cleanUp()
+	{
+		// Override me!
 	}
 }
