@@ -11,6 +11,7 @@ import org.lwjgl.openal.AL10;
 import org.newdawn.slick.openal.Audio;
 import org.newdawn.slick.openal.WaveData;
 
+import tsa2035.game.content.levels.cutscenes.LoadingScreen;
 import tsa2035.game.engine.audio.AudioManager;
 import tsa2035.game.engine.core.Renderer;
 import tsa2035.game.engine.texture.AnimatedTexture;
@@ -91,10 +92,8 @@ public class Game {
 		airMeter = new AirMeter(0.85f, 0.83f, new AnimatedTexture("/tsa2035/game/content/images/airmeter", "airmeter", 54, 1), 120000);
 		airMeter.setScale(0.7f);
 		
-		// Preload animation
-		new AnimatedTexture("/tsa2035/game/content/images/introanimation", "animation", 205, 15);
 		startSoundtrack();	
-		Renderer.renderLoop(new Menu());
+		Renderer.renderLoop(new LoadingScreen());
 	}
 
 }

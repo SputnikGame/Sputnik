@@ -90,6 +90,7 @@ public class Renderer {
 	
 	public static void renderLoop(Scene firstScene) throws LWJGLException
 	{
+		firstScene.loadScene();
 		setScene(firstScene);
 		while ( !Display.isCloseRequested() )
 		{
@@ -177,6 +178,11 @@ public class Renderer {
 	{
 		setScene(newScene);
 		switchState = -1;
+		currentAlpha = 0;
+	}
+	
+	public static void skipAnimation()
+	{
 		currentAlpha = 0;
 	}
 }
