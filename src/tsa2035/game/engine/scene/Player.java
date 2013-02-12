@@ -23,7 +23,6 @@ public class Player extends Sprite {
 	protected boolean onLadder = false;
 	protected boolean leftWalking = false;
 	
-	SinglePressKeyboard interactKey = new SinglePressKeyboard(Keyboard.KEY_E);
 	
 	public Player(float x, float y, Texture t, boolean handleGravity) {
 		super(x, y, t);
@@ -63,7 +62,7 @@ public class Player extends Sprite {
 		boolean hitSides[] = new boolean[4];
 		boolean freefall = false;
 		boolean allowJumping = false;
-		boolean interactPressed = interactKey.check();
+		boolean interactPressed = scene.getInteractKey().check();
 		while ( sceneObjects.hasNext() )
 		{
 			Sprite thisObj = sceneObjects.next();

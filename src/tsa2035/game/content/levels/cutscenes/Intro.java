@@ -29,11 +29,11 @@ public class Intro extends Scene implements AnimationFinishedCallback {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+			
 	}
 
 	@Override
-	public void sceneLogic() {
+	public void sceneLogic(Scene parentScene) {
 		
 	}
 	

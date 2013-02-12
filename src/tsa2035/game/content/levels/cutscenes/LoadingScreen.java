@@ -23,7 +23,7 @@ public class LoadingScreen extends Scene {
 	}
 
 	@Override
-	public void sceneLogic() {
+	public void sceneLogic(Scene parentScene) {
 		if ( isFirstLoop )
 		{
 			Renderer.skipAnimation();

@@ -57,9 +57,9 @@ public class DemoLevel extends Scene {
 	}
 	
 	@Override
-	public void sceneLogic() {
-		// This function is called every render loop
-		// Note: callbacks are the prefered way to do collision/interaction checking, not polling
+	public void sceneLogic(Scene parentScene) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

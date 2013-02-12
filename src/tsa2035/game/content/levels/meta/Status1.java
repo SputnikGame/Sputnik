@@ -7,11 +7,13 @@ import org.lwjgl.input.Keyboard;
 
 import tsa2035.game.engine.core.Renderer;
 import tsa2035.game.engine.scene.Scene;
+import tsa2035.game.engine.scene.SinglePressKeyboard;
 import tsa2035.game.engine.scene.Sprite;
 import tsa2035.game.engine.texture.AnimatedTexture;
 
 public class Status1 extends Scene {
 	Scene returnTo = null;
+	
 	public Status1(Scene returnTo)
 	{
 		this.returnTo = returnTo;
@@ -32,9 +34,9 @@ public class Status1 extends Scene {
 	}
 	
 	@Override
-	public void sceneLogic() 
+	public void sceneLogic(Scene parentScene) 
 	{
-		if ( Keyboard.isKeyDown(Keyboard.KEY_E) )
+		if ( parentScene.getInteractKey().check() )
 			Renderer.animatedSceneSwitch(returnTo);
 	}
 	

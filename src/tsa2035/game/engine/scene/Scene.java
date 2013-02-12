@@ -16,10 +16,15 @@ public abstract class Scene {
 	private ArrayList<Sprite> objects = new ArrayList<Sprite>();
 	private Background bg = new SolidBackground(Color.BLACK);
 	SceneAudioManager audioManager = new SceneAudioManager();
-	
+	SinglePressKeyboard interactKey = new SinglePressKeyboard(Keyboard.KEY_E);
 	public Scene()
 	{
 
+	}
+	
+	public SinglePressKeyboard getInteractKey()
+	{
+		return interactKey;
 	}
 	
 	public void setBackground(Background bg)
@@ -52,7 +57,7 @@ public abstract class Scene {
 		return null;
 	}
 	
-	public abstract void sceneLogic();
+	public abstract void sceneLogic(Scene parentScene);
 	
 	public void render()
 	{
@@ -68,7 +73,7 @@ public abstract class Scene {
 			obj.render(this);
 			GL11.glPopMatrix();
 		}
-		sceneLogic();
+		sceneLogic(this);
 	}
 	
 	public Iterator<Sprite> iterator()

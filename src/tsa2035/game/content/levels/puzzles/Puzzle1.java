@@ -90,7 +90,7 @@ public class Puzzle1 extends Scene {
 	}
 	
 	@Override
-	public void sceneLogic() {
+	public void sceneLogic(Scene parentScene) {
 		setBackground(isSolved()?GreenBG:RedBG);
 		
 		if ( keyZ.check() )

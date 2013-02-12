@@ -104,7 +104,7 @@ public class Level8 extends Scene {
 	}
 	
 	@Override
-	public void sceneLogic() {
+	public void sceneLogic(Scene parentScene) {
 		if ( puzzle.isSolved()) 
 		{
 			((PolyTexSprite)getObject("regenpanel")).setTexture("solved");

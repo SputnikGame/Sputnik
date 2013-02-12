@@ -32,9 +32,9 @@ public class Status2 extends Scene {
 	}
 	
 	@Override
-	public void sceneLogic() 
+	public void sceneLogic(Scene parentScene) 
 	{
-		if ( Keyboard.isKeyDown(Keyboard.KEY_E) )
+		if ( parentScene.getInteractKey().check() )
 			Renderer.animatedSceneSwitch(returnTo);
 	}
 	
