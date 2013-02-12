@@ -90,7 +90,6 @@ public class Renderer {
 	
 	public static void renderLoop(Scene firstScene) throws LWJGLException
 	{
-		firstScene.loadScene();
 		setScene(firstScene);
 		while ( !Display.isCloseRequested() )
 		{

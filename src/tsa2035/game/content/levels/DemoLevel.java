@@ -57,7 +57,7 @@ public class DemoLevel extends Scene {
 	}
 	
 	@Override
-	public void sceneLogic(Scene parentScene) {
+	public void sceneLogic() {
 		// TODO Auto-generated method stub
 		
 	}

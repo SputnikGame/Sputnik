@@ -88,7 +88,7 @@ public class Level3 extends Scene {
 		}
 	}
 	
-	public void sceneLogic(Scene parentScene) {
+	public void sceneLogic() {
 	}
 
 }

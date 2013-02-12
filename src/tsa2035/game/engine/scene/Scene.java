@@ -57,7 +57,7 @@ public abstract class Scene {
 		return null;
 	}
 	
-	public abstract void sceneLogic(Scene parentScene);
+	public abstract void sceneLogic();
 	
 	public void render()
 	{
@@ -73,7 +73,7 @@ public abstract class Scene {
 			obj.render(this);
 			GL11.glPopMatrix();
 		}
-		sceneLogic(this);
+		sceneLogic();
 	}
 	
 	public Iterator<Sprite> iterator()

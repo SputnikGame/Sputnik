@@ -144,7 +144,7 @@ public class Level4 extends Scene {
 		}
 	}
 	
-	public void sceneLogic(Scene parentScene) {
+	public void sceneLogic() {
 	}
 
 }

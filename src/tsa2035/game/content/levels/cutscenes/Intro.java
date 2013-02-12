@@ -33,7 +33,7 @@ public class Intro extends Scene implements AnimationFinishedCallback {
 	}
 
 	@Override
-	public void sceneLogic(Scene parentScene) {
+	public void sceneLogic() {
 		
 	}
 	

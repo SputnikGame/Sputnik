@@ -35,7 +35,7 @@ public class End extends Scene {
 	}
 	
 	@Override
-	public void sceneLogic(Scene parentScene) {
+	public void sceneLogic() {
 		if ( isFinished )
 		{
 			Renderer.animatedSceneSwitch(new Menu());

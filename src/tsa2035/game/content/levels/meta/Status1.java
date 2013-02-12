@@ -31,9 +31,9 @@ public class Status1 extends Scene {
 	}
 	
 	@Override
-	public void sceneLogic(Scene parentScene) 
+	public void sceneLogic() 
 	{
-		if ( parentScene.getInteractKey().check() )
+		if ( getInteractKey().check() )
 			Renderer.animatedSceneSwitch(returnTo);
 	}
 	

@@ -60,7 +60,7 @@ public class Level2 extends Scene {
 	}
 	
 	@Override
-	public void sceneLogic(Scene parentScene) {
+	public void sceneLogic() {
 	}
 
 }
