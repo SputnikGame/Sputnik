@@ -14,7 +14,7 @@ public class End extends Scene {
 
 	Timer endTime = new Timer(); 
 	boolean isFinished = false;
-	public void loadScene()
+	public End()
 	{
 		try {
 			addToScene("message", new Sprite(0,0, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/completion.png")));

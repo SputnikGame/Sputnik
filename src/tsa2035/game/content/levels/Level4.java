@@ -22,8 +22,7 @@ public class Level4 extends Scene {
 	boolean statusHasBeenChecked = false;
 	boolean box1Opened = false;
 	boolean box2Opened = false;
-	
-	public void loadScene()
+	public Level4()
 	{
 		try {
 			setBackground(new SpriteBackground(TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/wallpanels.png")));

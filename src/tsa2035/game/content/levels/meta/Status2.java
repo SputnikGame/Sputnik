@@ -15,10 +15,6 @@ public class Status2 extends Scene {
 	public Status2(Scene returnTo)
 	{
 		this.returnTo = returnTo;
-	}
-	
-	public void loadScene()
-	{
 		try {
 			addToScene("status", new Sprite(0,0,new AnimatedTexture("/tsa2035/game/content/images/statusInterface/airOnline", "status", 3,1)));
 			((AnimatedTexture)getObject("status").getTexture()).fire();
@@ -28,7 +24,8 @@ public class Status2 extends Scene {
 		} catch (IOException e) {
 			System.out.println("Texture loading failed");
 			e.printStackTrace();
-		}	
+		}
+		
 	}
 	
 	@Override

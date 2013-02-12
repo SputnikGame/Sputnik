@@ -95,11 +95,6 @@ public abstract class Scene {
 		}			
 	}
 	
-	public void loadScene()
-	{
-		// Override me!
-	}
-	
 	public void cleanUp()
 	{
 		// Override me!

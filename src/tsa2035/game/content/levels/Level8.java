@@ -23,7 +23,7 @@ public class Level8 extends Scene {
 	
 	Puzzle1 puzzle = new Puzzle1(this);
 	
-	public void loadScene()
+	public Level8()
 	{
 		try {
 			setBackground(new SpriteBackground(TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/wallpanels.png")));

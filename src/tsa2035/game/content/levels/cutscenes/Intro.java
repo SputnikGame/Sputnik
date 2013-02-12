@@ -14,7 +14,7 @@ import tsa2035.game.engine.texture.AnimatedTexture;
 import tsa2035.game.engine.texture.AnimationFinishedCallback;
 
 public class Intro extends Scene implements AnimationFinishedCallback {
-	public void loadScene()
+	public Intro()
 	{
 		AL10.alSourceStop(Game.soundtrackSource.get(0));
 		try {
