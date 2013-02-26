@@ -1,28 +1,35 @@
-package tsa2035.game.engine.scene;
+package tsa2035.game.engine.particlefx;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
+import tsa2035.game.engine.scene.Scene;
+import tsa2035.game.engine.scene.Sprite;
 import tsa2035.game.engine.texture.Texture;
 
-public class Particle extends Sprite {
+public class SparkParticle extends Sprite {
 
 	long lifeTime = 0;
 	float velocity = 0;
 	long startTime;
 	float xHeading, yHeading;
-	public Particle(float x, float y, Texture t, float minLife, float maxLife, float minVelocity, float maxVelocity) {
+	float xVelocity = 0, yVelocity = 0;
+	public SparkParticle(float x, float y, Texture t, float minLife, float maxLife, float minVelocity, float maxVelocity) {
 		super(x, y, t);
 		lifeTime = (long) (Math.floor(Math.random()*maxLife)+minLife);
 		velocity = (float) (Math.random()*maxVelocity)+minVelocity;
 		
-		xHeading = (float) (Math.random()*velocity);
-		yHeading = (float) (Math.random()*velocity);
+		xVelocity = velocity;
+		yVelocity = velocity;
 		
-		if ( Math.floor(Math.random()*10) < 5 )
-			xHeading = -xHeading;
+		xHeading = (float) (Math.random()*xVelocity);
+		yHeading = (float) (Math.random()*yVelocity);
+		
+		setX(getX()+xHeading);
+		setY(getY()+yHeading);
+
 		if ( Math.floor(Math.random()*10) < 5 )
 			yHeading = -yHeading;
+
+		if ( Math.floor(Math.random()*10) < 5 )
+			xHeading = -xHeading;
 		
 		startTime = System.currentTimeMillis();
 	}

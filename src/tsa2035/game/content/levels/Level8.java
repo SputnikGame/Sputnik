@@ -3,12 +3,15 @@ package tsa2035.game.content.levels;
 
 import java.io.IOException;
 
+import org.lwjgl.input.Keyboard;
+
 import tsa2035.game.content.core.Game;
 import tsa2035.game.content.levels.cutscenes.End;
 import tsa2035.game.content.levels.meta.Status1;
 import tsa2035.game.content.levels.meta.Status2;
 import tsa2035.game.content.levels.puzzles.Puzzle1;
 import tsa2035.game.engine.core.Renderer;
+import tsa2035.game.engine.particlefx.SparkEffect;
 import tsa2035.game.engine.scene.FinishedCallback;
 import tsa2035.game.engine.scene.InteractionCallback;
 import tsa2035.game.engine.scene.PolyTexSprite;
@@ -52,6 +55,10 @@ public class Level8 extends Scene {
 			addToScene("ogenerator", new Sprite(-0.48f, -0.5f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/oxygengenerator.png")));
 			addToScene("statuspanel", new Sprite(-0.88f, -0.45f, new LoopedAnimatedTexture("/tsa2035/game/content/images/common", "statuspanel", 2, 2))).setScale(0.5f).setInteractable(true);
 
+			addToScene("spark", new SparkEffect(0.91f,0.14f, TextureManager.getTextureFromResource("/tsa2035/game/engine/particlefx/sparkParticle.png"),
+					1, 5, 400, 600, 0.004f, 0.002f));
+			
+			
 			final PolyTexSprite regen = new PolyTexSprite(0.1f,-0.42f, "closed", TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/accessdoor_all_closed.png"), false);
 			addToScene("regenpanel", regen).setScale(0.5f).setInteractable(true);
 			regen.addTexture("open", TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/accessdoor_regen_open.png"));
@@ -109,6 +116,16 @@ public class Level8 extends Scene {
 		{
 			((PolyTexSprite)getObject("regenpanel")).setTexture("solved");
 			Game.getAirMeter().reset();
+			
+		}
+		
+		if ( Keyboard.isKeyDown(Keyboard.KEY_Z) )
+		{
+			((SparkEffect)getObject("spark")).stopFx();
+		}
+		if ( Keyboard.isKeyDown(Keyboard.KEY_X) )
+		{
+			((SparkEffect)getObject("spark")).startFx();
 		}
 	}
 
