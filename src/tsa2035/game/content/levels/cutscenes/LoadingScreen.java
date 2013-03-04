@@ -12,7 +12,7 @@ import tsa2035.game.engine.texture.TextureManager;
 public class LoadingScreen extends Scene {
 	boolean doneLoading = false;
 	boolean isFirstLoop = true;
-	public void loadScene()
+	public LoadingScreen()
 	{
 		try {
 			addToScene("img", new Sprite(0,0,TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/loadingImg.png")));
