@@ -6,7 +6,7 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.openal.AL;
 import org.lwjgl.opengl.Display;
 
-import tsa2035.game.content.levels.Level1;
+import tsa2035.game.content.levels.Tutorial1;
 import tsa2035.game.content.levels.cutscenes.Intro;
 import tsa2035.game.engine.core.Renderer;
 import tsa2035.game.engine.scene.PolyTexSprite;
@@ -78,7 +78,7 @@ public class Menu extends Scene {
 					Renderer.animatedSceneSwitch(new Intro());
 					break;
 				case 1: // Tut
-					Renderer.animatedSceneSwitch(new Level1());
+					Renderer.animatedSceneSwitch(new Tutorial1());
 					break;
 				case 2: // Exit
 					AL.destroy();
