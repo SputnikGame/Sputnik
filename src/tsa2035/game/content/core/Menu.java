@@ -23,7 +23,7 @@ public class Menu extends Scene {
 	SinglePressKeyboard downArrow = new SinglePressKeyboard(Keyboard.KEY_S);
 	int selected = 0;
 	
-	public void loadScene()
+	public Menu()
 	{
 		Game.getAirMeter().stop();
 		Game.getAirMeter().setCurrentCallback(null);
