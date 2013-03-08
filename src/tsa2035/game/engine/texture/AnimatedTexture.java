@@ -12,16 +12,33 @@ public class AnimatedTexture implements Texture {
 	int current = 0;
 	long nextSwitch = 0;
 	int numberOfFrames;
-	
+	String basePath, animationName;
 	boolean running = false;
 	
 	public AnimatedTexture(String basePath, String animationName, int numberOfFrames, int fps) throws FileNotFoundException, IOException
 	{
 		switchRate = 1000/fps;
 		this.numberOfFrames = numberOfFrames;
+		this.basePath = basePath;
+		this.animationName = animationName;
 		for ( int i = 0; i < numberOfFrames; i++ )
 		{
 			textures.add(TextureManager.getTextureFromResource(basePath+"/"+animationName+getNumberWithLeadingZeros(i+1)+".png"));
+		}
+	}
+	
+	protected AnimatedTexture(String basePath, String animationName, int numberOfFrames, int fps, boolean preload) throws FileNotFoundException, IOException
+	{
+		switchRate = 1000/fps;
+		this.numberOfFrames = numberOfFrames;
+		this.basePath = basePath;
+		this.animationName = animationName;
+		if ( preload )
+		{
+			for ( int i = 0; i < numberOfFrames; i++ )
+			{
+				textures.add(TextureManager.getTextureFromResource(basePath+"/"+animationName+getNumberWithLeadingZeros(i+1)+".png"));
+			}
 		}
 	}
 	

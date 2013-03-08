@@ -12,13 +12,14 @@ import tsa2035.game.engine.scene.Scene;
 import tsa2035.game.engine.scene.Sprite;
 import tsa2035.game.engine.texture.AnimatedTexture;
 import tsa2035.game.engine.texture.AnimationFinishedCallback;
+import tsa2035.game.engine.texture.LargeAnimatedTexture;
 
 public class Intro extends Scene implements AnimationFinishedCallback {
 	public Intro()
 	{
 		AL10.alSourceStop(Game.soundtrackSource.get(0));
 		try {
-			AnimatedTexture video = new AnimatedTexture("/tsa2035/game/content/images/introanimation", "animation", 205, 15);
+			LargeAnimatedTexture video = new LargeAnimatedTexture("/tsa2035/game/content/images/introanimation", "animation", 205, 15, false);
 			video.registerFinishedCallback(this);
 			video.fire();
 			addToScene("video", new Sprite(0,0,video));

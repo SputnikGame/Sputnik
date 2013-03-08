@@ -32,7 +32,7 @@ public class LoadingScreen extends Scene {
 		if ( !doneLoading && !isFirstLoop )
 		{
 			try {
-				new AnimatedTexture("/tsa2035/game/content/images/introanimation", "animation", 205, 15);
+				//new AnimatedTexture("/tsa2035/game/content/images/introanimation", "animation", 205, 15);
 			} catch (Exception e) {
 				System.out.println("Failed to preload animation");
 				e.printStackTrace();
