@@ -2,15 +2,15 @@ package tsa2035.game.content.levels;
 
 import java.io.IOException;
 
-import tsa2035.game.content.core.Menu;
+import tsa2035.game.content.core.Game;
 import tsa2035.game.engine.core.Renderer;
+import tsa2035.game.engine.scene.FinishedCallback;
 import tsa2035.game.engine.scene.InteractionCallback;
 import tsa2035.game.engine.scene.PolyTexSprite;
 import tsa2035.game.engine.scene.Scene;
 import tsa2035.game.engine.scene.Sprite;
+import tsa2035.game.engine.scene.TimerObject;
 import tsa2035.game.engine.scene.background.SpriteBackground;
-import tsa2035.game.engine.texture.AnimatedTexture;
-import tsa2035.game.engine.texture.AnimationFinishedCallback;
 import tsa2035.game.engine.texture.TextureManager;
 
 public class Level3 extends Scene {
@@ -19,14 +19,85 @@ public class Level3 extends Scene {
 	{
 		try {
 			setBackground(new SpriteBackground(TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/wallpanels.png")));
-			addToScene("character", new MainCharacter(-0.7f, -0.5f)).setLayer(10);
+			
+			addToScene("airmeter", Game.getAirMeter()).setLayer(99);
+			
+			Game.getAirMeter().setCurrentCallback(new FinishedCallback(){
+				@Override
+				public void timerFinished(TimerObject parent) {
+					Renderer.animatedSceneSwitch(new Level2());
+					Game.getAirMeter().reset();
+					Game.getAirMeter().start();
+				}
+			});
+			
+			
+			addToScene("character", new MainCharacter(0.65f, -0.6f)).setLayer(10);
+			
 			addToScene("floor", new Sprite(0f, -0.98f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/floor.png"))).setSolid(true);
-			addToScene("pipes", new Sprite(0f, 0.89f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/pipes.png"))).setSolid(true).setLayer(0);
-			addToScene("vents", new Sprite(0f, 0.7f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/vents.png"))).setSolid(true).setLayer(-1);
-			addToScene("interact", new Sprite(-0.75f, 0.4f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/interact.png")));
-			addToScene("door", new Sprite(0.75f, -0.58f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/door.png"))).setLayer(-2).setInteractable(true);
-			addToScene("noentry", new Sprite(0.75f, -0.1f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/noentry.png"))).setScale(0.8f);
-			addToScene("gosign", new Sprite(-0.559f, 0f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/go.png"))).setScale(0.8f);
+			addToScene("pipes", new Sprite(0f, 0.89f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/pipes.png"))).setLayer(2);
+			addToScene("vents", new Sprite(0f, 0.7f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/vents.png"))).setLayer(2);
+			addToScene("door", new PolyTexSprite(-0.78f, -0.58f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/doororiginal.png"))).setInteractable(false);
+			((PolyTexSprite)getObject("door")).addTexture("active", TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/door.png"));
+			
+			
+			addToScene("gosign", new Sprite(0f, 0.35f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/goleft.png"))).setScale(0.8f);
+			addToScene("wallpipes", new Sprite(0f, 0f, TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/wallpipes.png"))).setLayer(1);
+		
+			final PolyTexSprite odist = new PolyTexSprite(0.498f,-0.4f, "closed", TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/accessdoor_dist_closed.png"), false);
+			final PolyTexSprite auxpwr = new PolyTexSprite(0.15f,-0.4f, "closed", TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/accessdoor_all_closed.png"), false);			
+			final PolyTexSprite mainpwr = new PolyTexSprite(-0.2f,-0.4f, "closed", TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/accessdoor_all_closed.png"), false);
+			
+			addToScene("mainpower", mainpwr).setScale(0.5f).setInteractable(true);
+			mainpwr.addTexture("open", TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/accessdoor_mainpwr_open.png"));
+			mainpwr.registerInteractionCallback(new InteractionCallback(){
+			@Override
+				public void interactionOccured(Sprite interacter, Sprite interactee) 
+				{
+					mainpwr.setTexture("open");
+					if ( mainpwr.getTextureName().equals("open") && auxpwr.getTextureName().equals("open") && odist.getTextureName().equals("open") )
+					{
+						odist.setTexture("openrdy");
+						getObject("door").setInteractable(true);
+						((PolyTexSprite)getObject("door")).setTexture("active");
+					}
+				}
+			});
+			
+			
+			addToScene("auxpower", auxpwr).setScale(0.5f).setInteractable(true);
+			auxpwr.addTexture("open", TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/accessdoor_auxpwr_open.png"));
+			auxpwr.registerInteractionCallback(new InteractionCallback(){
+			@Override
+			public void interactionOccured(Sprite interacter,
+				Sprite interactee) 
+				{
+					auxpwr.setTexture("open");
+					if ( mainpwr.getTextureName().equals("open") && auxpwr.getTextureName().equals("open") && odist.getTextureName().equals("open") )
+					{
+						odist.setTexture("openrdy");
+						getObject("door").setInteractable(true);
+						((PolyTexSprite)getObject("door")).setTexture("active");
+					}
+				}
+			});
+
+		addToScene("oxygendistributor", odist).setScale(0.5f).setInteractable(true);
+			odist.addTexture("open", TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/accessdoor_dist_open_nready.png"));
+			odist.addTexture("openrdy", TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/accessdoor_dist_open_ready.png"));
+			odist.registerInteractionCallback(new InteractionCallback(){
+			@Override
+			public void interactionOccured(Sprite interacter,
+			Sprite interactee) 
+			{
+				odist.setTexture("open");
+				if ( mainpwr.getTextureName().equals("open") && auxpwr.getTextureName().equals("open") && odist.getTextureName().equals("open") )
+				{
+					odist.setTexture("openrdy");
+					getObject("door").setInteractable(true);
+					((PolyTexSprite)getObject("door")).setTexture("active");
+				}
+			}});
 			
 			getObject("door").registerInteractionCallback(new InteractionCallback()
 			{
@@ -34,60 +105,19 @@ public class Level3 extends Scene {
 				@Override
 				public void interactionOccured(Sprite registeredObject,
 						Sprite withObject) {
-					Renderer.animatedSceneSwitch(new Menu());
+					Renderer.animatedSceneSwitch(new Level4());
 					
 				}
 				
 			});
 			
-			final PolyTexSprite aux = new PolyTexSprite(-0.25f,-0.4f, "closed", TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/accessdoor_all_closed.png"), false);
-			addToScene("auxbox", aux).setScale(0.5f).setInteractable(true);
-			aux.addTexture("open", TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/accessdoor_auxpwr_open.png"));
-			aux.registerInteractionCallback(new InteractionCallback(){
-			@Override
-			public void interactionOccured(Sprite interacter,
-			Sprite interactee) 
-			{
-			aux.setTexture("open");}});
-
-			final PolyTexSprite main = new PolyTexSprite(-0.75f,-0.4f, "closed", TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/accessdoor_all_closed.png"), false);
-			addToScene("mainbox", main).setScale(0.5f).setInteractable(true);
-			main.addTexture("open", TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/accessdoor_mainpwr_open.png"));
-			main.registerInteractionCallback(new InteractionCallback(){
-			@Override
-			public void interactionOccured(Sprite interacter,
-			Sprite interactee) 
-			{
-			main.setTexture("open");}});
-			
-			final PolyTexSprite switchbox = new PolyTexSprite(0.15f,-0.45f, "off", TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/switch_off.png"), false);
-			addToScene("switch", switchbox).setScale(0.5f).setInteractable(true);
-			switchbox.addTexture("on", TextureManager.getTextureFromResource("/tsa2035/game/content/images/common/switch_on.png"));
-			switchbox.registerInteractionCallback(new InteractionCallback(){
-			@Override
-			public void interactionOccured(Sprite interacter,
-			Sprite interactee) 
-			{
-			switchbox.setTexture("on");
-				((AnimatedTexture)getObject("gate").getTexture()).fire();
-			}});
-			
-			
-			addToScene("gate", new Sprite(0.45f, -0.68f, new AnimatedTexture("/tsa2035/game/content/images/gate", "gate", 35, 12))).setSolid(true);
-			((AnimatedTexture)getObject("gate").getTexture()).registerFinishedCallback(new AnimationFinishedCallback(){
-
-				@Override
-				public void animationFinished(AnimatedTexture animation) {
-					getObject("gate").setSolid(false);
-					
-				}
-			});
 		} catch (IOException e) {
 			System.out.println("Texture loading failed!");
 			e.printStackTrace();
 		}
 	}
 	
+	@Override
 	public void sceneLogic() {
 	}
 

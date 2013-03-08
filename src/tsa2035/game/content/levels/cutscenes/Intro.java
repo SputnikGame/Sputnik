@@ -6,7 +6,7 @@ import java.io.IOException;
 import org.lwjgl.openal.AL10;
 
 import tsa2035.game.content.core.Game;
-import tsa2035.game.content.levels.Level4;
+import tsa2035.game.content.levels.Level1;
 import tsa2035.game.engine.core.Renderer;
 import tsa2035.game.engine.scene.Scene;
 import tsa2035.game.engine.scene.Sprite;
@@ -44,7 +44,7 @@ public class Intro extends Scene implements AnimationFinishedCallback {
 		
 		Game.getAirMeter().reset();
 		Game.getAirMeter().start();
-		Renderer.animatedSceneSwitch(new Level4());
+		Renderer.animatedSceneSwitch(new Level1());
 	}
 	
 	public void cleanUp()
