@@ -3,11 +3,8 @@ package tsa2035.game.content.levels.meta;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import org.lwjgl.input.Keyboard;
-
 import tsa2035.game.engine.core.Renderer;
 import tsa2035.game.engine.scene.Scene;
-import tsa2035.game.engine.scene.SinglePressKeyboard;
 import tsa2035.game.engine.scene.Sprite;
 import tsa2035.game.engine.texture.AnimatedTexture;
 
